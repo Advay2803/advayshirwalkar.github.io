@@ -4,282 +4,311 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Advay Shirwalkar | Chemical Engineering PhD</title>
-<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
 <style>
   :root {
-    --navy: #0a1628;
-    --blue: #1a3a5c;
-    --accent: #00b4d8;
-    --gold: #f0a500;
-    --light: #f4f7fb;
-    --text: #1e2a3a;
-    --muted: #5a6a7e;
-    --card: #ffffff;
+    --bg: #ffffff;
+    --bg2: #f9fafb;
+    --text: #111827;
+    --muted: #6b7280;
+    --accent: #2563eb;
+    --accent2: #eff6ff;
+    --border: #e5e7eb;
+    --gold: #f59e0b;
   }
   * { margin:0; padding:0; box-sizing:border-box; }
-  html { scroll-behavior: smooth; }
-  body { font-family: 'Raleway', 'Segoe UI', system-ui, sans-serif; background: var(--light); color: var(--text); }
+  html { scroll-behavior:smooth; }
+  body { font-family:'Raleway',sans-serif; background:var(--bg); color:var(--text); overflow-x:hidden; }
 
-  /* NAV */
-  nav {
-    position: fixed; top:0; width:100%; background: rgba(10,22,40,0.97);
-    backdrop-filter: blur(10px); z-index:100; padding: 0 2rem;
-    display:flex; justify-content:space-between; align-items:center; height:60px;
-  }
-  .nav-logo { color:#fff; font-weight:700; font-size:1.1rem; letter-spacing:0.5px; }
-  .nav-logo span { color: var(--accent); }
-  nav ul { list-style:none; display:flex; gap:1.8rem; }
-  nav a { color:#cdd6e0; text-decoration:none; font-size:0.88rem; font-weight:500;
-    letter-spacing:0.3px; transition:color 0.2s; }
-  nav a:hover { color: var(--accent); }
+  /* PROGRESS BAR */
+  #progress { position:fixed; top:0; left:0; height:3px; background:var(--accent); z-index:999; transition:width 0.1s; width:0%; }
 
-  /* HERO */
-  .hero {
-    min-height: 100vh;
-    background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 60%, #0e4d6e 100%);
-    display:flex; align-items:center; justify-content:center;
-    padding: 80px 2rem 2rem;
-    position: relative; overflow:hidden;
+  /* NAV DOTS */
+  .nav-dots {
+    position:fixed; right:2rem; top:50%; transform:translateY(-50%);
+    display:flex; flex-direction:column; gap:0.8rem; z-index:100;
   }
-  .hero::before {
-    content:''; position:absolute; inset:0;
-    background: radial-gradient(ellipse at 70% 50%, rgba(0,180,216,0.12) 0%, transparent 60%);
+  .dot {
+    width:8px; height:8px; border-radius:50%; border:2px solid var(--accent);
+    background:transparent; cursor:pointer; transition:all 0.3s;
   }
-  .hero-inner { max-width:960px; width:100%; display:flex; gap:3rem; align-items:center; position:relative; }
-  .hero-text { flex:1; }
-  .hero-badge {
-    display:inline-block; background: rgba(0,180,216,0.15); color: var(--accent);
-    border:1px solid rgba(0,180,216,0.3); border-radius:20px;
-    padding:4px 14px; font-size:0.8rem; font-weight:600; margin-bottom:1rem; letter-spacing:0.5px;
+  .dot.active { background:var(--accent); transform:scale(1.3); }
+  .dot-label {
+    position:absolute; right:20px; background:var(--text); color:#fff;
+    font-size:0.7rem; font-weight:600; padding:3px 8px; border-radius:5px;
+    white-space:nowrap; opacity:0; pointer-events:none; transition:opacity 0.2s;
+    transform:translateY(-50%);
   }
-  h1 { font-size:3rem; font-weight:800; color:#fff; line-height:1.1; margin-bottom:0.5rem; }
-  h1 span { color: var(--accent); }
-  .hero-subtitle { font-size:1.1rem; color:#8baac7; margin-bottom:0.5rem; }
-  .hero-desc { font-size:0.97rem; color:#a0bcd4; line-height:1.7; max-width:520px; margin-bottom:1.8rem; }
-  .hero-btns { display:flex; gap:1rem; flex-wrap:wrap; }
-  .btn { padding:10px 22px; border-radius:8px; font-weight:600; font-size:0.9rem;
-    text-decoration:none; transition:all 0.2s; cursor:pointer; border:none; }
-  .btn-primary { background: var(--accent); color: var(--navy); }
-  .btn-primary:hover { background:#00d4ff; transform:translateY(-1px); }
-  .btn-outline { background:transparent; color:#fff; border:1.5px solid rgba(255,255,255,0.3); }
-  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
-  .hero-stats { display:flex; gap:2rem; margin-top:2rem; flex-wrap:wrap; }
-  .stat { text-align:center; }
-  .stat-num { font-size:2rem; font-weight:800; color: var(--accent); }
-  .stat-label { font-size:0.75rem; color:#7a9cbd; text-transform:uppercase; letter-spacing:0.5px; margin-top:2px; }
-  .hero-img-wrap {
-    width:300px; height:300px; flex-shrink:0;
-    border-radius:50%; border:3px solid rgba(0,180,216,0.4);
-    overflow:hidden; background: var(--blue);
-    display:flex; align-items:center; justify-content:center;
-    box-shadow: 0 0 40px rgba(0,180,216,0.2);
-  }
-  .hero-initials { font-size:4rem; font-weight:800; color: var(--accent); }
-  .hero-img-wrap img { width:100%; height:100%; object-fit:cover; }
+  .dot:hover .dot-label { opacity:1; }
 
   /* SECTIONS */
-  section { padding:80px 2rem; }
-  .section-inner { max-width:960px; margin:0 auto; }
-  .section-label {
-    font-size:0.78rem; font-weight:700; color: var(--accent); text-transform:uppercase;
-    letter-spacing:2px; margin-bottom:0.5rem;
+  .screen {
+    min-height:100vh; display:flex; align-items:center; justify-content:center;
+    padding:80px 5rem; position:relative;
   }
-  h2 { font-size:2rem; font-weight:800; color: var(--text); margin-bottom:0.5rem; }
-  .section-line { width:48px; height:3px; background: var(--accent); border-radius:2px; margin-bottom:2rem; }
+  .screen:nth-child(even) { background:var(--bg2); }
+  .screen-inner { max-width:960px; width:100%; }
+
+  /* SECTION LABELS */
+  .s-tag {
+    display:inline-block; font-size:0.72rem; font-weight:700;
+    color:var(--accent); text-transform:uppercase; letter-spacing:2px;
+    margin-bottom:0.6rem;
+  }
+  h2 { font-size:2.2rem; font-weight:800; color:var(--text); margin-bottom:0.4rem; }
+  .s-line { width:40px; height:3px; background:var(--accent); border-radius:2px; margin-bottom:2.5rem; }
+  p { color:var(--muted); line-height:1.8; font-size:0.93rem; }
+
+  /* HERO */
+  #s0 { background:var(--bg); }
+  .hero-layout { display:grid; grid-template-columns:1fr 1fr; gap:6rem; align-items:center; }
+  .hero-left {}
+  .hero-greeting { font-size:0.9rem; font-weight:600; color:var(--accent); letter-spacing:1px; margin-bottom:0.5rem; }
+  h1 { font-size:3.8rem; font-weight:800; line-height:1.05; margin-bottom:1rem; }
+  h1 em { color:var(--accent); font-style:normal; }
+  .hero-sub { font-size:1rem; color:var(--muted); margin-bottom:0.5rem; font-weight:500; }
+  .hero-desc { margin-bottom:2rem; max-width:420px; }
+  .hero-btns { display:flex; gap:0.8rem; flex-wrap:wrap; }
+  .btn { padding:11px 22px; border-radius:8px; font-weight:700; font-size:0.85rem;
+    text-decoration:none; font-family:'Raleway',sans-serif; transition:all 0.2s; display:inline-block; }
+  .btn-blue { background:var(--accent); color:#fff; box-shadow:0 4px 14px rgba(37,99,235,0.25); }
+  .btn-blue:hover { background:#1d4ed8; transform:translateY(-1px); }
+  .btn-ghost { background:transparent; color:var(--text); border:1.5px solid var(--border); }
+  .btn-ghost:hover { border-color:var(--accent); color:var(--accent); }
+  .hero-right { display:flex; flex-direction:column; gap:1rem; }
+  .hero-img-box {
+    width:100%; aspect-ratio:1; border-radius:24px;
+    overflow:hidden; background:var(--accent2); border:1px solid var(--border);
+    box-shadow:0 20px 50px rgba(37,99,235,0.1);
+  }
+  .hero-img-box img { width:100%; height:100%; object-fit:cover; }
+  .hero-stats { display:grid; grid-template-columns:repeat(4,1fr); gap:0.8rem; }
+  .h-stat {
+    background:var(--bg2); border:1px solid var(--border); border-radius:12px;
+    padding:0.9rem 0.5rem; text-align:center;
+  }
+  .h-stat-n { font-size:1.5rem; font-weight:800; color:var(--accent); }
+  .h-stat-l { font-size:0.65rem; color:var(--muted); font-weight:600; text-transform:uppercase; letter-spacing:0.3px; margin-top:2px; }
 
   /* ABOUT */
-  #about { background:#fff; }
-  .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:start; }
-  .about-p { font-size:0.97rem; color: var(--muted); line-height:1.8; margin-bottom:1rem; }
-  .about-highlights { display:flex; flex-direction:column; gap:1rem; }
-  .highlight-card {
-    background: var(--light); border-radius:10px; padding:1rem 1.2rem;
-    border-left:3px solid var(--accent);
+  .about-layout { display:grid; grid-template-columns:1.2fr 1fr; gap:4rem; align-items:start; }
+  .about-text p { margin-bottom:1rem; }
+  .info-stack { display:flex; flex-direction:column; gap:0.8rem; }
+  .info-pill {
+    display:flex; align-items:center; gap:0.8rem;
+    background:var(--bg); border:1px solid var(--border); border-radius:12px; padding:0.9rem 1rem;
   }
-  .highlight-card h4 { font-size:0.9rem; font-weight:700; color: var(--text); margin-bottom:3px; }
-  .highlight-card p { font-size:0.83rem; color: var(--muted); line-height:1.5; }
+  .ip-icon { font-size:1.1rem; width:36px; height:36px; background:var(--accent2);
+    border-radius:8px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .ip-text h4 { font-size:0.82rem; font-weight:700; color:var(--text); }
+  .ip-text p { font-size:0.75rem; color:var(--muted); margin:0; line-height:1.4; }
 
   /* RESEARCH */
-  #research { background: var(--light); }
-  .research-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.5rem; }
-  .research-card {
-    background:#fff; border-radius:12px; padding:1.5rem;
-    box-shadow:0 2px 12px rgba(0,0,0,0.06); transition:transform 0.2s,box-shadow 0.2s;
-    border-top:3px solid var(--accent);
+  .res-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; }
+  .res-card {
+    border:1px solid var(--border); border-radius:14px; padding:1.4rem;
+    transition:all 0.25s; cursor:default; background:var(--bg);
   }
-  .research-card:hover { transform:translateY(-3px); box-shadow:0 8px 24px rgba(0,0,0,0.1); }
-  .research-icon { font-size:1.8rem; margin-bottom:0.8rem; }
-  .research-card h3 { font-size:1rem; font-weight:700; margin-bottom:0.5rem; color: var(--text); }
-  .research-card p { font-size:0.85rem; color: var(--muted); line-height:1.6; }
+  .res-card:hover { border-color:var(--accent); box-shadow:0 8px 24px rgba(37,99,235,0.08); transform:translateY(-3px); }
+  .res-card:hover .r-num { color:var(--accent); }
+  .r-num { font-size:2rem; font-weight:800; color:var(--border); transition:color 0.25s; margin-bottom:0.5rem; }
+  .res-card h3 { font-size:0.85rem; font-weight:700; margin-bottom:0.4rem; }
+  .res-card p { font-size:0.78rem; line-height:1.6; }
 
   /* PUBLICATIONS */
-  #publications { background:#fff; }
-  .pub-list { display:flex; flex-direction:column; gap:1.2rem; }
-  .pub-item {
-    background: var(--light); border-radius:10px; padding:1.2rem 1.5rem;
-    border-left:3px solid var(--gold); position:relative;
+  .pub-layout { display:flex; flex-direction:column; gap:1rem; }
+  .pub-row {
+    display:grid; grid-template-columns:80px 1fr auto;
+    gap:1.5rem; align-items:center;
+    border:1px solid var(--border); border-radius:14px; padding:1.4rem 1.6rem;
+    background:var(--bg); transition:all 0.2s;
   }
-  .pub-item.prep { border-left-color: #94a3b8; }
-  .pub-tag {
-    display:inline-block; font-size:0.7rem; font-weight:700; padding:2px 8px;
-    border-radius:4px; margin-bottom:0.5rem; letter-spacing:0.3px;
+  .pub-row:hover { border-color:var(--accent); box-shadow:0 4px 16px rgba(37,99,235,0.07); }
+  .pub-badge {
+    width:64px; height:64px; border-radius:12px; background:var(--accent2);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    font-size:0.7rem; font-weight:800; color:var(--accent); text-align:center; line-height:1.3;
+    flex-shrink:0;
   }
-  .tag-published { background:#dcfce7; color:#15803d; }
-  .tag-prep { background:#f1f5f9; color:#64748b; }
-  .tag-award { background:#fef9c3; color:#854d0e; }
-  .pub-title { font-size:0.93rem; font-weight:600; color: var(--text); margin-bottom:0.3rem; line-height:1.4; }
-  .pub-authors { font-size:0.82rem; color: var(--muted); margin-bottom:0.2rem; }
-  .pub-journal { font-size:0.82rem; color: var(--accent); font-style:italic; }
+  .pub-badge.prep { background:#f1f5f9; color:#94a3b8; }
+  .pub-info {}
+  .pub-tags { display:flex; gap:0.4rem; margin-bottom:0.4rem; flex-wrap:wrap; }
+  .ptag { font-size:0.65rem; font-weight:700; padding:2px 7px; border-radius:4px; }
+  .ptag-p { background:#dcfce7; color:#15803d; }
+  .ptag-i { background:#f1f5f9; color:#64748b; }
+  .ptag-h { background:#fef3c7; color:#92400e; }
+  .pub-title { font-size:0.88rem; font-weight:700; color:var(--text); line-height:1.4; margin-bottom:0.2rem; }
+  .pub-auth { font-size:0.75rem; color:var(--muted); margin-bottom:0.15rem; }
+  .pub-j { font-size:0.75rem; color:var(--accent); font-weight:600; }
+  .pub-arrow { font-size:1.2rem; color:var(--border); transition:color 0.2s; }
+  .pub-row:hover .pub-arrow { color:var(--accent); }
 
   /* SKILLS */
-  #skills { background: var(--light); }
-  .skills-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.5rem; }
-  .skill-group {
-    background:#fff; border-radius:12px; padding:1.5rem;
-    box-shadow:0 2px 12px rgba(0,0,0,0.05);
-  }
-  .skill-group h3 { font-size:0.9rem; font-weight:700; color: var(--text); margin-bottom:1rem;
+  .skills-layout { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; }
+  .sk-card { border:1px solid var(--border); border-radius:14px; padding:1.5rem; background:var(--bg); }
+  .sk-card h3 { font-size:0.82rem; font-weight:700; color:var(--text); margin-bottom:1rem;
     display:flex; align-items:center; gap:0.5rem; }
-  .skill-group h3 span { font-size:1.2rem; }
-  .skill-tags { display:flex; flex-wrap:wrap; gap:0.5rem; }
-  .skill-tag {
-    background: var(--light); color: var(--text); font-size:0.75rem; font-weight:500;
-    padding:4px 10px; border-radius:6px; border:1px solid #e2e8f0;
-  }
+  .sk-tags { display:flex; flex-wrap:wrap; gap:0.45rem; }
+  .sk-tag { background:var(--bg2); border:1px solid var(--border); color:var(--text);
+    font-size:0.72rem; font-weight:600; padding:3px 10px; border-radius:6px; }
 
   /* AWARDS */
-  #awards { background:#fff; }
-  .awards-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1rem; }
-  .award-item {
-    background: var(--light); border-radius:10px; padding:1rem 1.2rem;
-    display:flex; gap:1rem; align-items:flex-start;
+  .awards-layout { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; }
+  .aw-card {
+    border:1px solid var(--border); border-radius:14px; padding:1.4rem;
+    background:var(--bg); transition:all 0.2s;
+    display:flex; flex-direction:column; gap:0.5rem;
   }
-  .award-icon { font-size:1.5rem; flex-shrink:0; }
-  .award-title { font-size:0.88rem; font-weight:700; color: var(--text); }
-  .award-org { font-size:0.78rem; color: var(--muted); margin-top:2px; }
+  .aw-card:hover { border-color:var(--gold); box-shadow:0 4px 16px rgba(245,158,11,0.1); }
+  .aw-e { font-size:1.8rem; }
+  .aw-t { font-size:0.85rem; font-weight:700; color:var(--text); line-height:1.3; }
+  .aw-o { font-size:0.75rem; color:var(--muted); }
 
   /* CONTACT */
-  #contact { background: linear-gradient(135deg, var(--navy), var(--blue)); }
-  #contact h2, #contact .section-label { color:#fff; }
-  #contact .section-line { background: var(--accent); }
-  .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center; }
-  .contact-p { color:#8baac7; font-size:0.97rem; line-height:1.7; margin-bottom:1.5rem; }
-  .contact-links { display:flex; flex-direction:column; gap:0.8rem; }
-  .contact-link {
-    display:flex; align-items:center; gap:0.8rem;
-    color:#a0bcd4; font-size:0.9rem; text-decoration:none;
-    transition:color 0.2s;
+  .contact-layout { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center; }
+  .contact-left h2 { margin-bottom:0.4rem; }
+  .contact-left p { margin-bottom:1.5rem; }
+  .c-links { display:flex; flex-direction:column; gap:0.7rem; }
+  .c-link {
+    display:flex; align-items:center; gap:0.8rem; text-decoration:none;
+    color:var(--text); font-size:0.88rem; font-weight:600;
+    border:1px solid var(--border); border-radius:10px; padding:0.75rem 1rem;
+    transition:all 0.2s; background:var(--bg);
   }
-  .contact-link:hover { color: var(--accent); }
-  .contact-link-icon {
-    width:36px; height:36px; background:rgba(0,180,216,0.1); border-radius:8px;
-    display:flex; align-items:center; justify-content:center; font-size:1rem;
-    border:1px solid rgba(0,180,216,0.2);
+  .c-link:hover { border-color:var(--accent); color:var(--accent); transform:translateX(4px); }
+  .c-link span { font-size:1rem; }
+  .contact-right {
+    background:var(--accent); border-radius:20px; padding:2.5rem;
+    display:flex; flex-direction:column; align-items:center; text-align:center; gap:1.2rem;
   }
-  .contact-cta {
-    background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1);
-    border-radius:16px; padding:2rem; text-align:center;
-  }
-  .contact-cta p { color:#8baac7; font-size:0.9rem; margin-bottom:1.2rem; }
+  .contact-right h3 { font-size:1.4rem; font-weight:800; color:#fff; }
+  .contact-right p { color:rgba(255,255,255,0.8); font-size:0.88rem; margin:0; }
+  .btn-white { background:#fff; color:var(--accent); padding:11px 26px; border-radius:8px;
+    font-weight:700; font-size:0.88rem; text-decoration:none; font-family:'Raleway',sans-serif;
+    transition:all 0.2s; }
+  .btn-white:hover { background:#eff6ff; }
 
   /* FOOTER */
-  footer { background: var(--navy); color:#4a6280; text-align:center; padding:1.5rem; font-size:0.8rem; }
+  footer { background:var(--text); color:#6b7280; text-align:center; padding:1.8rem; font-size:0.78rem; line-height:2; }
+  footer a { color:#60a5fa; text-decoration:none; }
 
-  /* RESPONSIVE */
-  @media(max-width:700px) {
-    h1 { font-size:2rem; }
-    .hero-inner { flex-direction:column-reverse; text-align:center; }
-    .hero-img-wrap { width:150px; height:150px; }
-    .about-grid, .contact-grid { grid-template-columns:1fr; }
-    .hero-btns { justify-content:center; }
-    .hero-stats { justify-content:center; }
+  /* SCROLL ARROW */
+  .scroll-hint {
+    position:absolute; bottom:2rem; left:50%; transform:translateX(-50%);
+    display:flex; flex-direction:column; align-items:center; gap:0.4rem;
+    color:var(--muted); font-size:0.72rem; font-weight:600; letter-spacing:1px;
+    animation:bob 2s ease-in-out infinite;
+  }
+  @keyframes bob { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(6px)} }
+  .scroll-hint svg { width:20px; opacity:0.5; }
+
+  @media(max-width:768px) {
+    .screen { padding:80px 2rem; }
+    .hero-layout, .about-layout, .contact-layout { grid-template-columns:1fr; gap:2rem; }
+    .hero-layout { flex-direction:column-reverse; }
+    h1 { font-size:2.5rem; }
+    .res-grid, .awards-layout { grid-template-columns:repeat(2,1fr); }
+    .skills-layout { grid-template-columns:1fr; }
+    .pub-row { grid-template-columns:60px 1fr; }
+    .pub-arrow { display:none; }
+    .nav-dots { display:none; }
   }
 </style>
 </head>
 <body>
+<div id="progress"></div>
 
-<nav>
-  <div class="nav-logo">Advay <span>Shirwalkar</span></div>
-  <ul>
-    <li><a href="#about">About</a></li>
-    <li><a href="#research">Research</a></li>
-    <li><a href="#publications">Publications</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#awards">Awards</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
+<!-- NAV DOTS -->
+<div class="nav-dots">
+  <div class="dot active" onclick="scrollTo(0)" title="Home">
+    <span class="dot-label">Home</span>
+  </div>
+  <div class="dot" onclick="scrollToSection('s1')" title="About">
+    <span class="dot-label">About</span>
+  </div>
+  <div class="dot" onclick="scrollToSection('s2')" title="Research">
+    <span class="dot-label">Research</span>
+  </div>
+  <div class="dot" onclick="scrollToSection('s3')" title="Publications">
+    <span class="dot-label">Publications</span>
+  </div>
+  <div class="dot" onclick="scrollToSection('s4')" title="Skills">
+    <span class="dot-label">Skills</span>
+  </div>
+  <div class="dot" onclick="scrollToSection('s5')" title="Awards">
+    <span class="dot-label">Awards</span>
+  </div>
+  <div class="dot" onclick="scrollToSection('s6')" title="Contact">
+    <span class="dot-label">Contact</span>
+  </div>
+</div>
 
 <!-- HERO -->
-<section class="hero" id="home">
-  <div class="hero-inner">
-    <div class="hero-text">
-      <div class="hero-badge">PhD Candidate · University of Pittsburgh</div>
-      <h1>Advay<br><span>Shirwalkar</span></h1>
-      <p class="hero-subtitle">Chemical &amp; Petroleum Engineering</p>
-      <p class="hero-desc">
-        Building the next generation of nickel-based electrocatalysts for clean hydrogen production.
-        Bridging fundamental electrochemistry with practical AEM electrolyzer performance.
-      </p>
-      <div class="hero-btns">
-        <a href="#publications" class="btn btn-primary">View Publications</a>
-        <a href="#contact" class="btn btn-outline">Get in Touch</a>
+<section class="screen" id="s0">
+  <div class="screen-inner">
+    <div class="hero-layout">
+      <div class="hero-left">
+        <p class="hero-greeting">👋 Hello, I'm</p>
+        <h1>Advay<br><em>Shirwalkar</em></h1>
+        <p class="hero-sub">PhD Candidate · Chemical & Petroleum Engineering</p>
+        <p class="hero-desc">Building next-generation nickel-based electrocatalysts for clean hydrogen — bridging fundamental electrochemistry with practical AEM electrolyzer performance at the University of Pittsburgh.</p>
+        <div class="hero-btns">
+          <a href="#s3" class="btn btn-blue">View Publications</a>
+          <a href="#s6" class="btn btn-ghost">Get in Touch</a>
+          <a href="#" class="btn btn-ghost">Download CV</a>
+        </div>
       </div>
-      <div class="hero-stats">
-        <div class="stat"><div class="stat-num">4</div><div class="stat-label">Publications</div></div>
-        <div class="stat"><div class="stat-num">12</div><div class="stat-label">Presentations</div></div>
-        <div class="stat"><div class="stat-num">3</div><div class="stat-label">Awards (2024–25)</div></div>
-        <div class="stat"><div class="stat-num">4</div><div class="stat-label">Undergrads Mentored</div></div>
+      <div class="hero-right">
+        <div class="hero-img-box">
+          <img src="photo.jpg" alt="Advay Shirwalkar"/>
+        </div>
+        <div class="hero-stats">
+          <div class="h-stat"><div class="h-stat-n">4</div><div class="h-stat-l">Papers</div></div>
+          <div class="h-stat"><div class="h-stat-n">12</div><div class="h-stat-l">Talks</div></div>
+          <div class="h-stat"><div class="h-stat-n">3</div><div class="h-stat-l">Awards</div></div>
+          <div class="h-stat"><div class="h-stat-n">4</div><div class="h-stat-l">Mentored</div></div>
+        </div>
       </div>
     </div>
-    <div class="hero-img-wrap">
-      <img src="photo.jpg" alt="Advay Shirwalkar"/>
-    </div>
+  </div>
+  <div class="scroll-hint">
+    <span>SCROLL</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
   </div>
 </section>
 
 <!-- ABOUT -->
-<section id="about">
-  <div class="section-inner">
-    <div class="section-label">Who I Am</div>
+<section class="screen" id="s1">
+  <div class="screen-inner">
+    <div class="s-tag">Who I Am</div>
     <h2>About Me</h2>
-    <div class="section-line"></div>
-    <div class="about-grid">
-      <div>
-        <p class="about-p">
-          I'm a PhD candidate in Chemical &amp; Petroleum Engineering at the University of Pittsburgh, 
-          working in the McKone Lab under the guidance of Dr. James McKone and Dr. Götz Veser. 
-          My thesis focuses on engineering nickel-based cathodes for alkaline hydrogen chemistry — 
-          a critical piece of the clean energy puzzle.
-        </p>
-        <p class="about-p">
-          My work spans the full arc from fundamental catalyst design to practical electrolyzer 
-          performance: synthesizing Ni–Mo composite electrocatalysts, understanding their 
-          degradation mechanisms, and developing novel electroanalytical methodologies to benchmark 
-          performance in realistic conditions.
-        </p>
-        <p class="about-p">
-          Before Pitt, I completed my Bachelor of Chemical Engineering at the Institute of Chemical 
-          Technology (ICT) Mumbai — one of India's premier engineering institutions — where I 
-          researched CO₂ utilization catalysis and graduated with a Government of India scholarship.
-        </p>
+    <div class="s-line"></div>
+    <div class="about-layout">
+      <div class="about-text">
+        <p>I'm a PhD candidate in Chemical & Petroleum Engineering at the University of Pittsburgh, working in the McKone Lab under Dr. James McKone and Dr. Götz Veser. My thesis focuses on engineering nickel-based cathodes for alkaline hydrogen chemistry — a critical piece of the clean energy puzzle.</p>
+        <p>My work spans the full arc from fundamental catalyst design to practical electrolyzer performance: synthesizing Ni–Mo composite electrocatalysts, understanding their degradation mechanisms, and developing novel electroanalytical methodologies to benchmark performance in realistic conditions.</p>
+        <p>Before Pitt, I completed my Bachelor of Chemical Engineering at the Institute of Chemical Technology (ICT) Mumbai — one of India's premier engineering institutions — where I researched CO₂ utilization catalysis and graduated on a Government of India scholarship.</p>
       </div>
-      <div class="about-highlights">
-        <div class="highlight-card">
-          <h4>🔬 Research Focus</h4>
-          <p>Alkaline AEM water electrolyzers, Ni–Mo electrocatalysts, HER kinetics, catalyst degradation &amp; shelf-life stability</p>
+      <div class="info-stack">
+        <div class="info-pill">
+          <div class="ip-icon">🔬</div>
+          <div class="ip-text"><h4>Research Focus</h4><p>AEM electrolyzers, Ni–Mo catalysts, HER kinetics, degradation</p></div>
         </div>
-        <div class="highlight-card">
-          <h4>🏛️ Lab &amp; Advisors</h4>
-          <p>McKone Lab, University of Pittsburgh · Dr. James McKone &amp; Dr. Götz Veser</p>
+        <div class="info-pill">
+          <div class="ip-icon">🏛️</div>
+          <div class="ip-text"><h4>Lab & Advisors</h4><p>McKone Lab · Dr. McKone & Dr. Veser · Pitt</p></div>
         </div>
-        <div class="highlight-card">
-          <h4>🎓 Education</h4>
-          <p>PhD, Univ. of Pittsburgh (est. Dec. 2026) · B.ChE, ICT Mumbai (2022)</p>
+        <div class="info-pill">
+          <div class="ip-icon">🎓</div>
+          <div class="ip-text"><h4>Education</h4><p>PhD Pitt (est. Dec. 2026) · B.ChE ICT Mumbai (2022)</p></div>
         </div>
-        <div class="highlight-card">
-          <h4>🌍 Industry Relevance</h4>
-          <p>Green hydrogen production, electrolyzer scale-up, catalyst commercialization</p>
+        <div class="info-pill">
+          <div class="ip-icon">📍</div>
+          <div class="ip-text"><h4>Location</h4><p>Pittsburgh, PA · Open to relocation</p></div>
+        </div>
+        <div class="info-pill">
+          <div class="ip-icon">🌱</div>
+          <div class="ip-text"><h4>Industry Interest</h4><p>Green hydrogen, electrolyzer scale-up, catalyst commercialization</p></div>
         </div>
       </div>
     </div>
@@ -287,145 +316,142 @@
 </section>
 
 <!-- RESEARCH -->
-<section id="research">
-  <div class="section-inner">
-    <div class="section-label">What I Do</div>
+<section class="screen" id="s2">
+  <div class="screen-inner">
+    <div class="s-tag">What I Do</div>
     <h2>Research Areas</h2>
-    <div class="section-line"></div>
-    <div class="research-grid">
-      <div class="research-card">
-        <div class="research-icon">⚡</div>
+    <div class="s-line"></div>
+    <div class="res-grid">
+      <div class="res-card">
+        <div class="r-num">01</div>
         <h3>Alkaline Hydrogen Evolution</h3>
-        <p>Engineering Ni–Mo composite and multimetallic nanoparticulate electrocatalysts with high activity and durability for the hydrogen evolution reaction (HER) in alkaline media.</p>
+        <p>Engineering Ni–Mo composite and multimetallic nanoparticulate electrocatalysts with high activity and durability for HER in alkaline media.</p>
       </div>
-      <div class="research-card">
-        <div class="research-icon">🔋</div>
+      <div class="res-card">
+        <div class="r-num">02</div>
         <h3>AEM Electrolyzer Performance</h3>
-        <p>Benchmarking and comparing Ni- and Pt-based cathodes in practical alkaline anion exchange membrane (AEM) water electrolyzers using a custom modular MEA platform.</p>
+        <p>Benchmarking Ni- and Pt-based cathodes in practical alkaline anion exchange membrane water electrolyzers using a custom modular MEA platform.</p>
       </div>
-      <div class="research-card">
-        <div class="research-icon">🧪</div>
-        <h3>Catalyst Synthesis &amp; Scale-Up</h3>
-        <p>Developing novel synthesis strategies that scale nanoparticulate catalyst production from milligrams to tens of grams — bridging lab-scale discovery and practical deployment.</p>
+      <div class="res-card">
+        <div class="r-num">03</div>
+        <h3>Catalyst Synthesis & Scale-Up</h3>
+        <p>Developing novel synthesis strategies scaling nanoparticulate catalyst production from milligrams to tens of grams for practical deployment.</p>
       </div>
-      <div class="research-card">
-        <div class="research-icon">📉</div>
+      <div class="res-card">
+        <div class="r-num">04</div>
         <h3>Degradation Mechanisms</h3>
-        <p>Investigating operational and shelf-life degradation of Ni–Mo catalysts using chemical and magnetic signatures, combined with ex-situ characterization and COMSOL simulations.</p>
+        <p>Investigating operational and shelf-life degradation of Ni–Mo catalysts using chemical and magnetic signatures combined with COMSOL simulations.</p>
       </div>
-      <div class="research-card">
-        <div class="research-icon">🛠️</div>
+      <div class="res-card">
+        <div class="r-num">05</div>
         <h3>Electroanalytical Methodology</h3>
-        <p>Developing novel methods to filter and elucidate reaction kinetics in a three-electrode MEA configuration — enabling more accurate catalyst benchmarking.</p>
+        <p>Developing novel methods to filter and elucidate reaction kinetics in a three-electrode MEA configuration for accurate catalyst benchmarking.</p>
       </div>
-      <div class="research-card">
-        <div class="research-icon">♻️</div>
-        <h3>CO₂ Utilization (Prior Work)</h3>
-        <p>Protic ionic liquid and CeO₂ nanoparticle-based catalysts for CO₂ cyclocondensation and fixation reactions, achieving &gt;99% substrate conversion.</p>
+      <div class="res-card">
+        <div class="r-num">06</div>
+        <h3>CO₂ Utilization</h3>
+        <p>Protic ionic liquid and CeO₂ nanoparticle-based catalysts for CO₂ cyclocondensation and fixation, achieving &gt;99% substrate conversion.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- PUBLICATIONS -->
-<section id="publications">
-  <div class="section-inner">
-    <div class="section-label">My Work</div>
+<section class="screen" id="s3">
+  <div class="screen-inner">
+    <div class="s-tag">My Work</div>
     <h2>Publications</h2>
-    <div class="section-line"></div>
-    <div class="pub-list">
-      <div class="pub-item">
-        <span class="pub-tag tag-published">Published · 2025</span>
-        <div class="pub-title">Comparing Intrinsic Catalytic Activity and Practical Performance of Ni- and Pt-Based Alkaline Anion Exchange Membrane Water Electrolyzer Cathodes</div>
-        <div class="pub-authors">Shirwalkar, A., Kaur, M., Zhong, S., Pupucevski, M., Hu, K., Yan, Y., Lattimer, J., &amp; McKone, J.</div>
-        <div class="pub-journal">ACS Energy Letters, 10(4), 1779 — <strong>High-Impact Journal</strong></div>
+    <div class="s-line"></div>
+    <div class="pub-layout">
+      <div class="pub-row">
+        <div class="pub-badge">ACS<br/>2025</div>
+        <div class="pub-info">
+          <div class="pub-tags"><span class="ptag ptag-p">Published</span><span class="ptag ptag-h">⭐ High Impact</span></div>
+          <div class="pub-title">Comparing Intrinsic Catalytic Activity and Practical Performance of Ni- and Pt-Based Alkaline AEM Water Electrolyzer Cathodes</div>
+          <div class="pub-auth">Shirwalkar, A., Kaur, M., Zhong, S., et al. & McKone, J.</div>
+          <div class="pub-j">ACS Energy Letters, 10(4), 1779</div>
+        </div>
+        <div class="pub-arrow">→</div>
       </div>
-      <div class="pub-item">
-        <span class="pub-tag tag-published">Published · 2024</span>
-        <div class="pub-title">Unsupported Pt Nanoparticles: Synthesis, Deactivation, and Hydrogen Electrocatalysis in Unpurified Electrolytes</div>
-        <div class="pub-authors">Patil, R., Roenigk, S., Shirwalkar, A., Meng, Q., &amp; McKone, J.</div>
-        <div class="pub-journal">Journal of the Electrochemical Society, 171, 036509</div>
+      <div class="pub-row">
+        <div class="pub-badge">JES<br/>2024</div>
+        <div class="pub-info">
+          <div class="pub-tags"><span class="ptag ptag-p">Published</span></div>
+          <div class="pub-title">Unsupported Pt Nanoparticles: Synthesis, Deactivation, and Hydrogen Electrocatalysis in Unpurified Electrolytes</div>
+          <div class="pub-auth">Patil, R., Roenigk, S., Shirwalkar, A., Meng, Q., & McKone, J.</div>
+          <div class="pub-j">Journal of the Electrochemical Society, 171, 036509</div>
+        </div>
+        <div class="pub-arrow">→</div>
       </div>
-      <div class="pub-item prep">
-        <span class="pub-tag tag-prep">In Preparation · 2026</span>
-        <div class="pub-title">Elucidating Internal Mass Transfer in Thin Catalyst Films: Experimental and COMSOL Simulation Approaches</div>
-        <div class="pub-authors">Shirwalkar, A., Sarawate, D., &amp; McKone, J.</div>
-        <div class="pub-journal">Manuscript in preparation</div>
+      <div class="pub-row">
+        <div class="pub-badge prep">2026</div>
+        <div class="pub-info">
+          <div class="pub-tags"><span class="ptag ptag-i">In Preparation</span></div>
+          <div class="pub-title">Elucidating Internal Mass Transfer in Thin Catalyst Films: Experimental and COMSOL Simulation Approaches</div>
+          <div class="pub-auth">Shirwalkar, A., Sarawate, D., & McKone, J.</div>
+          <div class="pub-j">Manuscript in preparation</div>
+        </div>
+        <div class="pub-arrow">→</div>
       </div>
-      <div class="pub-item prep">
-        <span class="pub-tag tag-prep">In Preparation · 2026</span>
-        <div class="pub-title">Investigating the Shelf-Life Stability of Nickel–Molybdenum Composites (Ni–Mo/C) Through Chemical and Magnetic Signatures</div>
-        <div class="pub-authors">Shirwalkar, A., Nandkumaran, N., Leighton, C., &amp; McKone, J.</div>
-        <div class="pub-journal">Manuscript in preparation</div>
+      <div class="pub-row">
+        <div class="pub-badge prep">2026</div>
+        <div class="pub-info">
+          <div class="pub-tags"><span class="ptag ptag-i">In Preparation</span></div>
+          <div class="pub-title">Investigating the Shelf-Life Stability of Ni–Mo/C Through Chemical and Magnetic Signatures</div>
+          <div class="pub-auth">Shirwalkar, A., Nandkumaran, N., Leighton, C., & McKone, J.</div>
+          <div class="pub-j">Manuscript in preparation</div>
+        </div>
+        <div class="pub-arrow">→</div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- SKILLS -->
-<section id="skills">
-  <div class="section-inner">
-    <div class="section-label">Capabilities</div>
+<section class="screen" id="s4">
+  <div class="screen-inner">
+    <div class="s-tag">Capabilities</div>
     <h2>Technical Skills</h2>
-    <div class="section-line"></div>
-    <div class="skills-grid">
-      <div class="skill-group">
-        <h3><span>📊</span> Electrochemical &amp; Analytical</h3>
-        <div class="skill-tags">
-          <span class="skill-tag">CV / LSV</span>
-          <span class="skill-tag">EIS</span>
-          <span class="skill-tag">XPS</span>
-          <span class="skill-tag">XRD</span>
-          <span class="skill-tag">SEM / TEM</span>
-          <span class="skill-tag">EDX</span>
-          <span class="skill-tag">ICP-OES</span>
-          <span class="skill-tag">Raman</span>
-          <span class="skill-tag">FTIR</span>
-          <span class="skill-tag">UV-Vis</span>
-          <span class="skill-tag">TGA</span>
-          <span class="skill-tag">NMR</span>
-          <span class="skill-tag">GC-MS</span>
-          <span class="skill-tag">XRF</span>
+    <div class="s-line"></div>
+    <div class="skills-layout">
+      <div class="sk-card">
+        <h3>📊 Electrochemical & Analytical</h3>
+        <div class="sk-tags">
+          <span class="sk-tag">CV / LSV</span><span class="sk-tag">EIS</span><span class="sk-tag">XPS</span>
+          <span class="sk-tag">XRD</span><span class="sk-tag">SEM / TEM</span><span class="sk-tag">EDX</span>
+          <span class="sk-tag">ICP-OES</span><span class="sk-tag">Raman</span><span class="sk-tag">FTIR</span>
+          <span class="sk-tag">UV-Vis</span><span class="sk-tag">TGA</span><span class="sk-tag">NMR</span>
+          <span class="sk-tag">GC-MS</span><span class="sk-tag">XRF</span>
         </div>
       </div>
-      <div class="skill-group">
-        <h3><span>⚗️</span> Synthesis &amp; Fabrication</h3>
-        <div class="skill-tags">
-          <span class="skill-tag">Electrodeposition</span>
-          <span class="skill-tag">Hydrothermal Synthesis</span>
-          <span class="skill-tag">Physical Vapor Deposition</span>
-          <span class="skill-tag">Sputtering</span>
-          <span class="skill-tag">Glovebox Ops</span>
-          <span class="skill-tag">Spray Coaters</span>
-          <span class="skill-tag">Autoclave Reactors</span>
-          <span class="skill-tag">Wet Chemistry</span>
-          <span class="skill-tag">3D Printing (FDM/SLA)</span>
+      <div class="sk-card">
+        <h3>⚗️ Synthesis & Fabrication</h3>
+        <div class="sk-tags">
+          <span class="sk-tag">Electrodeposition</span><span class="sk-tag">Hydrothermal</span>
+          <span class="sk-tag">PVD / Sputtering</span><span class="sk-tag">Glovebox Ops</span>
+          <span class="sk-tag">Spray Coaters</span><span class="sk-tag">Autoclave Reactors</span>
+          <span class="sk-tag">3D Printing (FDM/SLA)</span><span class="sk-tag">Wet Chemistry</span>
         </div>
       </div>
-      <div class="skill-group">
-        <h3><span>💻</span> Software &amp; Programming</h3>
-        <div class="skill-tags">
-          <span class="skill-tag">Python</span>
-          <span class="skill-tag">MATLAB</span>
-          <span class="skill-tag">COMSOL Multiphysics</span>
-          <span class="skill-tag">AutoCAD</span>
-          <span class="skill-tag">Fusion 360</span>
-          <span class="skill-tag">LaTeX</span>
-          <span class="skill-tag">OriginPro / Prism</span>
-          <span class="skill-tag">ChemCAD / DWSIM</span>
-          <span class="skill-tag">Adobe Illustrator</span>
-          <span class="skill-tag">ImageJ / VESTA</span>
+      <div class="sk-card">
+        <h3>💻 Software & Programming</h3>
+        <div class="sk-tags">
+          <span class="sk-tag">Python</span><span class="sk-tag">MATLAB</span>
+          <span class="sk-tag">COMSOL Multiphysics</span><span class="sk-tag">AutoCAD</span>
+          <span class="sk-tag">Fusion 360</span><span class="sk-tag">LaTeX</span>
+          <span class="sk-tag">OriginPro / Prism</span><span class="sk-tag">ChemCAD</span>
+          <span class="sk-tag">Adobe Illustrator</span><span class="sk-tag">VESTA</span>
         </div>
       </div>
-      <div class="skill-group">
-        <h3><span>🎓</span> Teaching &amp; Leadership</h3>
-        <div class="skill-tags">
-          <span class="skill-tag">Teaching Assistant (2 courses)</span>
-          <span class="skill-tag">Undergraduate Mentorship</span>
-          <span class="skill-tag">Design EXPO Judge</span>
-          <span class="skill-tag">Qualifying Exam Judge</span>
-          <span class="skill-tag">Lab Scheduling Liaison</span>
-          <span class="skill-tag">Science Outreach</span>
+      <div class="sk-card">
+        <h3>🎓 Teaching & Leadership</h3>
+        <div class="sk-tags">
+          <span class="sk-tag">TA – Systems Engineering</span>
+          <span class="sk-tag">TA – Thermodynamics</span>
+          <span class="sk-tag">Undergrad Mentorship</span>
+          <span class="sk-tag">Design EXPO Judge</span>
+          <span class="sk-tag">Qualifying Exam Judge</span>
+          <span class="sk-tag">Science Outreach</span>
         </div>
       </div>
     </div>
@@ -433,98 +459,43 @@
 </section>
 
 <!-- AWARDS -->
-<section id="awards">
-  <div class="section-inner">
-    <div class="section-label">Recognition</div>
-    <h2>Honors &amp; Awards</h2>
-    <div class="section-line"></div>
-    <div class="awards-grid">
-      <div class="award-item">
-        <div class="award-icon">🏆</div>
-        <div>
-          <div class="award-title">Best Scientific Animation</div>
-          <div class="award-org">University of Pittsburgh · Apr. 2025</div>
-        </div>
-      </div>
-      <div class="award-item">
-        <div class="award-icon">🥇</div>
-        <div>
-          <div class="award-title">Best Research Poster Presentation</div>
-          <div class="award-org">University of Pittsburgh · Apr. 2025</div>
-        </div>
-      </div>
-      <div class="award-item">
-        <div class="award-icon">🎨</div>
-        <div>
-          <div class="award-title">Best Scientific Journal Art</div>
-          <div class="award-org">University of Pittsburgh · Apr. 2024</div>
-        </div>
-      </div>
-      <div class="award-item">
-        <div class="award-icon">📚</div>
-        <div>
-          <div class="award-title">Government of India Undergraduate Scholarship</div>
-          <div class="award-org">ICT Mumbai · 2018–2022</div>
-        </div>
-      </div>
-      <div class="award-item">
-        <div class="award-icon">🥋</div>
-        <div>
-          <div class="award-title">Karate Black Belt &amp; National Gold Medalist</div>
-          <div class="award-org">Maharashtra, India · 2012</div>
-        </div>
-      </div>
-      <div class="award-item">
-        <div class="award-icon">⭐</div>
-        <div>
-          <div class="award-title">Student of the Year</div>
-          <div class="award-org">RGS English High School · 2016</div>
-        </div>
-      </div>
+<section class="screen" id="s5">
+  <div class="screen-inner">
+    <div class="s-tag">Recognition</div>
+    <h2>Honors & Awards</h2>
+    <div class="s-line"></div>
+    <div class="awards-layout">
+      <div class="aw-card"><div class="aw-e">🏆</div><div class="aw-t">Best Scientific Animation</div><div class="aw-o">University of Pittsburgh · Apr. 2025</div></div>
+      <div class="aw-card"><div class="aw-e">🥇</div><div class="aw-t">Best Research Poster Presentation</div><div class="aw-o">University of Pittsburgh · Apr. 2025</div></div>
+      <div class="aw-card"><div class="aw-e">🎨</div><div class="aw-t">Best Scientific Journal Art</div><div class="aw-o">University of Pittsburgh · Apr. 2024</div></div>
+      <div class="aw-card"><div class="aw-e">📚</div><div class="aw-t">Government of India Undergraduate Scholarship</div><div class="aw-o">ICT Mumbai · 2018–2022</div></div>
+      <div class="aw-card"><div class="aw-e">🥋</div><div class="aw-t">Karate Black Belt & National Gold Medalist</div><div class="aw-o">Maharashtra, India · 2012</div></div>
+      <div class="aw-card"><div class="aw-e">⭐</div><div class="aw-t">Student of the Year</div><div class="aw-o">RGS English High School · 2016</div></div>
     </div>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact">
-  <div class="section-inner">
-    <div class="section-label">Let's Connect</div>
-    <h2>Contact</h2>
-    <div class="section-line"></div>
-    <div class="contact-grid">
-      <div>
-        <p class="contact-p">
-          I'm open to conversations about research collaborations, industry opportunities 
-          (especially in green hydrogen, electrolyzers, and energy storage), 
-          and postdoctoral or industry roles starting late 2026.
-        </p>
-        <div class="contact-links">
-          <a class="contact-link" href="mailto:ads288@pitt.edu">
-            <div class="contact-link-icon">📧</div>
-            ads288@pitt.edu
-          </a>
-          <a class="contact-link" href="mailto:advay.shirwalkar@pitt.edu">
-            <div class="contact-link-icon">📧</div>
-            advay.shirwalkar@pitt.edu
-          </a>
-          <a class="contact-link" href="https://linkedin.com/in/advay-shirwalkar-124b9218a" target="_blank">
-            <div class="contact-link-icon">💼</div>
-            LinkedIn Profile
-          </a>
-          <a class="contact-link" href="https://www.engineering.pitt.edu/people/students/chemical-petroleum/advay-shirwalkar/" target="_blank">
-            <div class="contact-link-icon">🏛️</div>
-            Pitt Faculty Page
-          </a>
-          <a class="contact-link" href="#">
-            <div class="contact-link-icon">📄</div>
-            Download CV (PDF)
-          </a>
+<section class="screen" id="s6">
+  <div class="screen-inner">
+    <div class="contact-layout">
+      <div class="contact-left">
+        <div class="s-tag">Let's Connect</div>
+        <h2>Contact</h2>
+        <div class="s-line"></div>
+        <p>I'm open to conversations about research collaborations, industry opportunities in green hydrogen and electrolyzers, and postdoctoral or industry roles starting late 2026.</p>
+        <div class="c-links">
+          <a href="mailto:ads288@pitt.edu" class="c-link"><span>📧</span> ads288@pitt.edu</a>
+          <a href="https://linkedin.com/in/advay-shirwalkar-124b9218a" target="_blank" class="c-link"><span>💼</span> LinkedIn Profile</a>
+          <a href="https://www.engineering.pitt.edu/people/students/chemical-petroleum/advay-shirwalkar/" target="_blank" class="c-link"><span>🏛️</span> Pitt Faculty Page</a>
+          <a href="#" class="c-link"><span>📄</span> Download CV (PDF)</a>
         </div>
       </div>
-      <div class="contact-cta">
-        <div style="font-size:2.5rem;margin-bottom:0.8rem;">🌱</div>
+      <div class="contact-right">
+        <div style="font-size:2.5rem;">🌱</div>
+        <h3>Open to Opportunities</h3>
         <p>Interested in green hydrogen, AEM electrolyzers, or nickel-based catalysts? Let's talk.</p>
-        <a href="mailto:ads288@pitt.edu" class="btn btn-primary">Send a Message</a>
+        <a href="mailto:ads288@pitt.edu" class="btn-white">Send a Message</a>
       </div>
     </div>
   </div>
@@ -532,8 +503,33 @@
 
 <footer>
   <p>© 2026 Advay Shirwalkar · All content and data rights reserved.</p>
-  <p style="margin-top:6px;">Website designed and generated with the assistance of <a href="https://claude.ai" style="color:#00b4d8;text-decoration:none;">Claude AI by Anthropic</a>.</p>
+  <p>Website designed and generated with the assistance of <a href="https://claude.ai">Claude AI by Anthropic</a>.</p>
 </footer>
 
+<script>
+  // Progress bar
+  window.addEventListener('scroll', () => {
+    const d = document.documentElement;
+    const pct = (d.scrollTop / (d.scrollHeight - d.clientHeight)) * 100;
+    document.getElementById('progress').style.width = pct + '%';
+  });
+
+  // Nav dots
+  const sections = ['s0','s1','s2','s3','s4','s5','s6'];
+  const dots = document.querySelectorAll('.dot');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting) {
+        const i = sections.indexOf(e.target.id);
+        dots.forEach((d,j) => d.classList.toggle('active', i===j));
+      }
+    });
+  }, { threshold: 0.5 });
+  sections.forEach(id => { const el = document.getElementById(id); if(el) obs.observe(el); });
+
+  function scrollToSection(id) {
+    document.getElementById(id)?.scrollIntoView({ behavior:'smooth' });
+  }
+</script>
 </body>
 </html>
