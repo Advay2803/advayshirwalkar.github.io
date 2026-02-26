@@ -173,14 +173,56 @@
   .footer-note a { color:var(--accent); text-decoration:none; }
 
   @media(max-width:768px) {
-    .top-header { padding:1.5rem; flex-direction:column; align-items:flex-start; gap:1rem; }
-    .header-name { font-size:2rem; }
-    .header-right { align-items:flex-start; }
+    .top-header { padding:1.2rem 1.5rem; flex-direction:column; align-items:flex-start; gap:0.8rem; }
+    .header-name { font-size:1.8rem; letter-spacing:1.5px; }
+    .header-sub { font-size:0.75rem; }
+    .header-right { align-items:flex-start; flex-direction:row; gap:1rem; }
     .header-stats { display:none; }
-    .main { padding:1.5rem; }
-    .home-grid,.contact-grid,.skills-grid,.paper-layout { grid-template-columns:1fr; }
-    .home-welcome { grid-column:1; }
-    .res-grid,.awards-grid { grid-template-columns:repeat(2,1fr); }
+    .cv-btn { font-size:0.75rem; padding:0.5rem 1rem; }
+    .nav-bar { overflow-x:auto; }
+    .tab { padding:0.75rem 1rem; font-size:0.68rem; letter-spacing:0.5px; }
+    .main { padding:1.2rem 1rem; }
+    .home-grid { grid-template-columns:1fr; }
+    .home-welcome { grid-column:1; padding:1.4rem 1.2rem; }
+    .home-welcome h3 { font-size:1rem; }
+    .home-welcome p { font-size:0.85rem; }
+    .about-grid, .contact-grid, .skills-grid, .paper-layout { grid-template-columns:1fr; }
+    .res-grid { grid-template-columns:1fr 1fr; }
+    .awards-grid { grid-template-columns:1fr 1fr; }
+    /* Introduction two-column collapse */
+    .topo-content > div[style*="grid-template-columns:320px"] { 
+      grid-template-columns:1fr !important; 
+    }
+    /* Photo in intro */
+    .topo-content > div > div:first-child > div:first-child {
+      width:120px !important;
+      height:120px !important;
+      margin:0 auto;
+    }
+    .panel-header h2 { font-size:1.3rem; }
+    .pub-card { flex-direction:column; gap:0.8rem; }
+    .pub-divider { width:100%; height:1px; align-self:auto; }
+    .paper-back { font-size:0.75rem; }
+    .res-card h3 { font-size:0.82rem; }
+    .res-card p { font-size:0.75rem; }
+    .aw-t { font-size:0.8rem; }
+    .q-text { font-size:0.82rem; }
+    .about-card p { font-size:0.85rem; }
+    .c-link { font-size:0.82rem; }
+    .cta-card h3 { font-size:1rem; }
+    .cta-card p { font-size:0.82rem; }
+    .footer-note { font-size:0.7rem; }
+  }
+
+  @media(max-width:480px) {
+    .header-name { font-size:1.4rem; }
+    .res-grid { grid-template-columns:1fr; }
+    .awards-grid { grid-template-columns:1fr; }
+    .home-grid { grid-template-columns:1fr; }
+    .tab { padding:0.65rem 0.8rem; font-size:0.62rem; }
+    .main { padding:1rem 0.8rem; }
+    .topo-content { padding:1rem !important; }
+    .pub-year-main { font-size:0.9rem; }
   }
 </style>
 </head>
