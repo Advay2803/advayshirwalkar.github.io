@@ -271,11 +271,17 @@
             <path d="M-50,60 Q100,0 200,40 Q320,80 420,20 Q540,-30 650,30 Q760,90 900,40"/>
           </g>
         </svg>
-        <h3>Welcome to my portfolio</h3>
-        <p>I'm a PhD candidate in Chemical & Petroleum Engineering at the University of Pittsburgh, developing Ni–Mo/C composite cathodes for alkaline AEM water electrolyzers — with a track record spanning catalyst synthesis, 1000× scale-up in collaboration with Giner Inc., device-level benchmarking, and degradation diagnostics. <strong style="color:#fff;">Graduating December 2026</strong> — actively seeking full-time R&D or process development roles in the energy and manufacturing sectors.</p>
-        <div class="home-btns">
-          <button class="btn btn-white" onclick="show('publications')">View Publications</button>
-          <button class="btn btn-outline-w" onclick="show('contact')">Get in Touch</button>
+        <div style="position:relative;z-index:1;">
+          <div style="display:inline-flex;align-items:center;gap:0.5rem;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);border-radius:5px;padding:3px 10px;margin-bottom:0.8rem;">
+            <span style="font-size:0.68rem;font-weight:700;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:0.5px;">Industry Partner</span>
+            <span style="font-size:0.78rem;font-weight:800;color:#fff;">Giner Inc.</span>
+          </div>
+          <h3>Welcome to my portfolio</h3>
+          <p>I'm a PhD candidate in Chemical & Petroleum Engineering at the University of Pittsburgh, developing Ni–Mo/C composite cathodes for alkaline AEM water electrolyzers — with a 1000× scale-up delivered to Giner Inc. and device performance matching platinum. <strong style="color:#fff;">Graduating December 2026 · Actively interviewing.</strong></p>
+          <div class="home-btns">
+            <button class="btn btn-white" onclick="show('publications')">View Publications</button>
+            <button class="btn btn-outline-w" onclick="show('contact')">Get in Touch</button>
+          </div>
         </div>
       </div>
       <div class="card quick-card">
@@ -382,7 +388,7 @@
     </div>
 
     <!-- FIVE THRUSTS -->
-    <div style="font-size:0.68rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:1rem;">Five Interconnected Research Thrusts — click to explore</div>
+    <div style="font-size:0.68rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:1rem;">Five Interconnected Research Thrusts — click any card to expand</div>
     <div class="topo-wrap" style="background:linear-gradient(160deg,#f0f4ff 0%,#f8f9fc 100%);">
       <svg class="topo-bg" viewBox="0 0 1000 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
         <g fill="none" stroke="#1a4fad" stroke-width="0.9" opacity="0.15">
@@ -570,17 +576,28 @@
       </svg>
       <div class="topo-content">
         <div class="pub-list">
-          <a class="pub-card" href="https://doi.org/10.1021/acsenergylett.5c00439" target="_blank" style="text-decoration:none;">
-            <div class="pub-year"><span class="pub-year-main">2025</span><span class="pub-year-journal">ACS</span></div>
+          <!-- ACS paper — featured/dominant -->
+          <a class="pub-card" href="https://doi.org/10.1021/acsenergylett.5c00439" target="_blank" style="text-decoration:none;border-left:4px solid var(--accent);background:rgba(255,255,255,0.97);">
+            <div style="display:flex;flex-direction:column;align-items:center;gap:0.2rem;flex-shrink:0;min-width:58px;text-align:center;padding-top:2px;">
+              <span style="font-size:1.1rem;font-weight:800;color:var(--accent);display:block;">2025</span>
+              <span style="font-size:0.62rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;">ACS</span>
+              <span style="font-size:0.6rem;font-weight:700;padding:2px 5px;border-radius:3px;background:#fdf4e3;color:#9a6a10;margin-top:2px;">Lead</span>
+            </div>
             <div class="pub-divider"></div>
             <div class="pub-body">
-              <div class="pub-tags"><span class="ptag ptag-p">Published</span><span class="ptag ptag-h">High Impact</span><span class="ptag" style="background:#e8f0ff;color:#1a4fad;">Lead Author</span></div>
-              <div class="pub-title">Comparing Intrinsic Catalytic Activity and Practical Performance of Ni- and Pt-Based Alkaline Anion Exchange Membrane Water Electrolyzer Cathodes</div>
+              <div class="pub-tags"><span class="ptag ptag-p">Published</span><span class="ptag ptag-h">High Impact · ACS Energy Letters</span></div>
+              <div class="pub-title" style="font-size:0.95rem;">Comparing Intrinsic Catalytic Activity and Practical Performance of Ni- and Pt-Based Alkaline Anion Exchange Membrane Water Electrolyzer Cathodes</div>
               <div class="pub-auth">Shirwalkar, A., Kaur, M., Zhong, S., Pupucevski, M., Hu, K., Yan, Y., Lattimer, J., & McKone, J.</div>
               <div class="pub-j">ACS Energy Letters, 10(4), 1779</div>
-              <div class="pub-cta">View paper on ACS</div>
+              <div style="margin-top:0.6rem;padding:0.6rem 0.8rem;background:var(--accent2);border-radius:6px;border-left:2px solid var(--accent);">
+                <div style="font-size:0.65rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:1px;margin-bottom:0.2rem;">In plain English</div>
+                <div style="font-size:0.82rem;color:var(--text);line-height:1.6;">We showed that a nickel catalyst can match platinum inside a real hydrogen-producing device — the strongest evidence yet that expensive platinum can be replaced without sacrificing performance.</div>
+              </div>
+              <div class="pub-cta" style="margin-top:0.5rem;">View paper on ACS</div>
             </div>
           </a>
+
+          <!-- JES paper -->
           <a class="pub-card" href="https://doi.org/10.1149/1945-7111/ad330e" target="_blank" style="text-decoration:none;">
             <div class="pub-year"><span class="pub-year-main">2024</span><span class="pub-year-journal">JES</span></div>
             <div class="pub-divider"></div>
@@ -589,9 +606,15 @@
               <div class="pub-title">Unsupported Pt Nanoparticles: Synthesis, Deactivation, and Hydrogen Electrocatalysis in Unpurified Electrolytes</div>
               <div class="pub-auth">Patil, R., Roenigk, S., Shirwalkar, A., Meng, Q., & McKone, J.</div>
               <div class="pub-j">Journal of the Electrochemical Society, 171, 036509</div>
+              <div style="margin-top:0.6rem;padding:0.6rem 0.8rem;background:var(--bg);border-radius:6px;border-left:2px solid var(--border);">
+                <div style="font-size:0.65rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:0.2rem;">In plain English</div>
+                <div style="font-size:0.82rem;color:var(--text);line-height:1.6;">Platinum catalysts degrade much faster in real-world impure water than in clean lab conditions — which means lab benchmarks routinely overestimate how well platinum actually performs in practice.</div>
+              </div>
               <div class="pub-cta">View paper on IOPscience</div>
             </div>
           </a>
+
+          <!-- JACS submitted -->
           <div class="pub-card prep">
             <div class="pub-year"><span class="pub-year-main">2026</span><span class="pub-year-journal">JACS</span></div>
             <div class="pub-divider"></div>
@@ -602,6 +625,8 @@
               <div class="pub-j">Submitted to Journal of the American Chemical Society</div>
             </div>
           </div>
+
+          <!-- In prep -->
           <div class="pub-card prep">
             <div class="pub-year"><span class="pub-year-main">2026</span><span class="pub-year-journal">In Prep</span></div>
             <div class="pub-divider"></div>
@@ -1014,10 +1039,10 @@
             <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:0.12;" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
               <g fill="none" stroke="white" stroke-width="1"><circle cx="200" cy="150" r="180"/><circle cx="200" cy="150" r="140"/><circle cx="200" cy="150" r="100"/><circle cx="200" cy="150" r="65"/><circle cx="200" cy="150" r="35"/></g>
             </svg>
-            <div class="cta-label">Currently Available For</div>
-            <h3>Industry & Research Opportunities · Late 2026</h3>
-            <p>Particularly interested in R&D or process development roles at the intersection of electrochemistry, green hydrogen, and catalyst scale-up within the energy and manufacturing sectors.</p>
-            <a href="mailto:advay.shirwalkar@pitt.edu" class="btn btn-white">Send a Message</a>
+            <div class="cta-label">Graduating December 2026</div>
+            <h3>Actively Interviewing · Available January 2027</h3>
+            <p>Looking for R&D or process development roles at electrolyzer companies, national labs, or specialty catalyst manufacturers. Let's talk before someone else does.</p>
+            <a href="mailto:advay.shirwalkar@pitt.edu" class="btn btn-white">Get in Touch Now</a>
           </div>
         </div>
       </div>
@@ -1169,6 +1194,8 @@
     expand.classList.toggle('open', !isOpen);
     card.classList.toggle('expanded', !isOpen);
   }
+
+  function show(s){
     document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
     document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
     document.getElementById('panel-'+s).classList.add('active');
