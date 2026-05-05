@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Advay Shirwalkar — Electrocatalyst R&amp;D · Green Hydrogen · Chemical Engineering PhD</title>
+<title>Advay Shirwalkar — Chemical Engineering PhD</title>
 <meta name="description" content="PhD candidate at the University of Pittsburgh developing PGM-free electrocatalysts for AEM water electrolysis. Earth-abundant nickel to replace platinum at the cathode. Graduating December 2026."/>
 
 <!-- Favicon (inline SVG monogram, no separate file needed) -->
@@ -113,8 +113,20 @@
   .opento-chip{font-size:0.72rem;font-weight:600;padding:3px 10px;border-radius:4px;background:var(--accent2);color:var(--accent);border:1px solid #c5d5f5;}
   .opento-divider{width:1px;height:20px;background:var(--border);}
 
+  /* INDUSTRY ENGAGEMENT */
+  .engagement-section{margin-top:1.5rem;}
+  .engagement-header{margin-bottom:1.1rem;}
+  .engagement-header h2{font-size:1.4rem;font-weight:800;color:var(--text);}
+  .engagement-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;}
+  .engagement-card{background:rgba(255,255,255,0.92);backdrop-filter:blur(4px);border:1px solid var(--border);border-radius:10px;padding:1.1rem 1.2rem;transition:all 0.2s;position:relative;overflow:hidden;}
+  .engagement-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--gold);}
+  .engagement-card:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(200,146,42,0.15);}
+  .engagement-org{font-size:0.86rem;font-weight:800;color:var(--text);margin-bottom:0.3rem;line-height:1.25;}
+  .engagement-type{font-size:0.6rem;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:0.6px;margin-bottom:0.5rem;}
+  .engagement-context{font-size:0.74rem;color:var(--muted);line-height:1.55;}
+
   /* ABOUT */
-  .about-card p{font-size:0.87rem;color:var(--muted);line-height:1.85;margin-bottom:0.9rem;}
+  .about-card p{font-size:0.87rem;color:var(--muted);line-height:1.85;margin-bottom:0.9rem;text-align:justify;}
 
   /* RESEARCH */
   .res-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;grid-auto-rows:1fr;}
@@ -244,6 +256,7 @@
     .res-grid{grid-template-columns:1fr 1fr;}
     .awards-grid{grid-template-columns:1fr 1fr;}
     .impact-grid{grid-template-columns:1fr 1fr;}
+    .engagement-grid{grid-template-columns:1fr 1fr;}
     .topo-content>div[style*="grid-template-columns:320px"]{grid-template-columns:1fr !important;}
     .topo-content>div>div:first-child>div:first-child{width:120px !important;height:120px !important;margin:0 auto;}
     .panel-header h2{font-size:1.3rem;}
@@ -255,6 +268,7 @@
     .res-grid{grid-template-columns:1fr;}
     .awards-grid{grid-template-columns:1fr;}
     .impact-grid{grid-template-columns:1fr;}
+    .engagement-grid{grid-template-columns:1fr;}
     .tab{padding:0.65rem 0.8rem;font-size:0.62rem;}
     .main{padding:1rem 0.8rem;}
     .topo-content{padding:1rem !important;}
@@ -337,7 +351,7 @@
         <div class="impact-tile">
           <div class="impact-marker">1000×</div>
           <div class="impact-title">Scale-Up Delivered to Industry</div>
-          <div class="impact-desc">Took Ni–Mo/C catalyst from milligrams to tens of grams with reproducible activity. Manufacturing protocols transferred to Giner Inc.</div>
+          <div class="impact-desc">Led the scale-up of Ni–Mo/C catalyst from milligrams to tens of grams with reproducible activity. Delivered manufacturing protocols to Giner Inc. for commercial roadmap.</div>
         </div>
         <div class="impact-tile">
           <div class="impact-marker">≈ Pt</div>
@@ -357,7 +371,36 @@
         <div class="impact-tile">
           <div class="impact-marker">6</div>
           <div class="impact-title">Researchers Mentored</div>
-          <div class="impact-desc">Two presented as co-authors at peer-reviewed venues (Bender 2025, Dossa 2024). Plus TA roles in ChemE Thermodynamics and Systems Engineering.</div>
+          <div class="impact-desc">Mentored two undergraduates to first-authored conference presentations (Bender 2025, Dossa 2024). Two semesters as TA — ChemE Thermodynamics and Systems Engineering.</div>
+        </div>
+      </div>
+    </div>
+    <div class="engagement-section">
+      <div class="engagement-header">
+        <div class="p-tag">Engagement</div>
+        <h2>Active Partnerships</h2>
+        <div class="p-line"></div>
+      </div>
+      <div class="engagement-grid">
+        <div class="engagement-card">
+          <div class="engagement-org">Giner Inc.</div>
+          <div class="engagement-type">Technology Transfer</div>
+          <div class="engagement-context">1000× catalyst scale-up; transfer-ready manufacturing protocols delivered for commercial roadmap.</div>
+        </div>
+        <div class="engagement-card">
+          <div class="engagement-org">Lawrence Berkeley National Laboratory</div>
+          <div class="engagement-type">Cross-Institutional Research</div>
+          <div class="engagement-context">Collaborative research with Prof. S. W. Boettcher's group on electrocatalysis benchmarking.</div>
+        </div>
+        <div class="engagement-card">
+          <div class="engagement-org">University of Minnesota</div>
+          <div class="engagement-type">Joint Research</div>
+          <div class="engagement-context">SQUID magnetometry and magnetic-signature analysis with Prof. Chris Leighton on Ni–Mo aging.</div>
+        </div>
+        <div class="engagement-card">
+          <div class="engagement-org">Lubrizol</div>
+          <div class="engagement-type">Upcoming · Industry-Funded</div>
+          <div class="engagement-context">Industry-funded collaboration on titanium corrosion remediation; project starting July 2026.</div>
         </div>
       </div>
     </div>
@@ -443,7 +486,7 @@
 
             <p>The hardest moment of the PhD was also one of the most formative. Early on I designed a GDE half-cell setup from scratch — and it failed. The plate clearance was wrong: the porous electrode was either under-compressed, killing electrical conductivity, or over-compressed, collapsing the very channels that let reactants reach the catalyst. Everything about the problem was new. There was no one to ask, no paper that covered it exactly. I was scared and excited in equal measure. I fixed it, rebuilt it, and in the process learned something I could not have learned any other way — that being the person who figures it out from first principles is exactly where I want to be.</p>
 
-            <p>Over four years I have taken Ni–Mo/C catalysts from milligram-scale synthesis to a 1000× scale-up in collaboration with Giner Inc., built and automated a custom electrolyzer testing platform, developed new analytical methods to diagnose catalyst failure, and shown that an earth-abundant nickel catalyst can match the performance of platinum inside a real hydrogen-producing device. Along the way I have had the privilege of mentoring six researchers, teaching two courses, and presenting this work at 16 conferences.</p>
+            <p>Over four years I have taken Ni–Mo/C catalysts from milligram-scale synthesis to a 1000× scale-up in collaboration with Giner Inc., built and automated a custom electrolyzer testing platform, developed new analytical methods to diagnose catalyst failure, and shown that an earth-abundant nickel catalyst can match the performance of platinum inside a real hydrogen-producing device. Along the way I have had the privilege of mentoring six researchers — two of whom became first-authors at peer-reviewed venues — teaching two courses, and presenting this work at 16 conferences.</p>
 
             <p>Outside the lab I train, run, hike, and trek. I hold a karate black belt and a national gold medal — not because I am naturally gifted, but because I learned early that the only competition that matters is with who you were yesterday. That lesson lives in how I approach research: I do not measure progress against others, I measure it against what I understood last week. Physical challenge and mental challenge feel the same to me — both require you to keep moving when it gets hard, and neither lets you fake it.</p>
 
