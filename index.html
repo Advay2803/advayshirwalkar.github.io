@@ -84,6 +84,16 @@
   .impact-title{font-size:0.74rem;font-weight:800;color:var(--text);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:0.5rem;line-height:1.35;}
   .impact-desc{font-size:0.78rem;color:var(--muted);line-height:1.65;}
 
+  /* OPEN TO STRIP */
+  .opento-strip{display:flex;align-items:center;gap:1.5rem;background:rgba(255,255,255,0.92);backdrop-filter:blur(4px);border:1px solid var(--border);border-radius:10px;padding:0.9rem 1.4rem;margin-top:1rem;position:relative;flex-wrap:wrap;}
+  .opento-strip::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--accent);border-radius:10px 0 0 10px;}
+  .opento-label{font-size:0.7rem;font-weight:800;color:var(--accent);text-transform:uppercase;letter-spacing:1.5px;flex-shrink:0;}
+  .opento-content{display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;}
+  .opento-group{display:flex;align-items:center;gap:0.4rem;flex-wrap:wrap;}
+  .opento-key{font-size:0.62rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;margin-right:0.15rem;}
+  .opento-chip{font-size:0.72rem;font-weight:600;padding:3px 10px;border-radius:4px;background:var(--accent2);color:var(--accent);border:1px solid #c5d5f5;}
+  .opento-divider{width:1px;height:20px;background:var(--border);}
+
   /* ABOUT */
   .about-card p{font-size:0.87rem;color:var(--muted);line-height:1.85;margin-bottom:0.9rem;}
 
@@ -297,25 +307,6 @@
           </div>
         </div>
       </div>
-      <div class="card quick-card">
-        <h3>Recent Highlights</h3>
-        <div class="q-row"><div class="q-bar"></div><div><div class="q-text">CRE Division Best Poster Award</div><div class="q-sub">AIChE Annual Meeting · Boston 2025</div></div></div>
-        <div class="q-row"><div class="q-bar"></div><div><div class="q-text">ACS Energy Letters Paper</div><div class="q-sub">Published · 2025</div></div></div>
-        <div class="q-row"><div class="q-bar"></div><div><div class="q-text">ECS & MRS 2026</div><div class="q-sub">Seattle & Honolulu · Spring 2026</div></div></div>
-        <div class="q-row"><div class="q-bar"></div><div><div class="q-text">Session Chair — ECS Seattle</div><div class="q-sub">May 2026</div></div></div>
-      </div>
-      <div class="card quick-card">
-        <h3>Current Work</h3>
-        <div class="q-row"><div class="q-bar q-bar-gold"></div><div><div class="q-text">Ni–Mo/C Shelf-Life Stability</div><div class="q-sub">Submitted to JACS · 2026</div></div></div>
-        <div class="q-row"><div class="q-bar q-bar-gold"></div><div><div class="q-text">Effectiveness Factor in Catalyst Films</div><div class="q-sub">COMSOL + RDE · Manuscript in preparation</div></div></div>
-        <div class="q-row"><div class="q-bar q-bar-gold"></div><div><div class="q-text">Operational Durability of Ni–Mo</div><div class="q-sub">AST · GDE half-cell · Ongoing</div></div></div>
-      </div>
-      <div class="card quick-card">
-        <h3>Open To</h3>
-        <div class="q-row"><div class="q-bar q-bar-green"></div><div><div class="q-text">Graduating Dec. 2026 · Actively Looking</div><div class="q-sub">Available from January 2027</div></div></div>
-        <div class="q-row"><div class="q-bar q-bar-green"></div><div><div class="q-text">R&D · Process Development · Scale-Up</div><div class="q-sub">Electrolyzers, fuel cells, catalysis, batteries</div></div></div>
-        <div class="q-row"><div class="q-bar q-bar-green"></div><div><div class="q-text">Target Sectors</div><div class="q-sub">Green hydrogen, energy storage, specialty chemicals, advanced materials</div></div></div>
-      </div>
     </div>
     <div class="impact-section">
       <div class="impact-header">
@@ -340,19 +331,33 @@
           <div class="impact-desc">Designed, built, and automated a custom modular three-electrode MEA system. Per-experiment cost cut 70× vs. conventional full-cell setups.</div>
         </div>
         <div class="impact-tile">
-          <div class="impact-marker">Novel</div>
-          <div class="impact-title">Magnetic QC Diagnostic</div>
-          <div class="impact-desc">Non-destructive aging diagnostic for Ni–Mo via SQUID magnetometry — directly applicable to manufacturing QC. Submitted to JACS (2026).</div>
-        </div>
-        <div class="impact-tile">
           <div class="impact-marker">4</div>
           <div class="impact-title">Industry & Cross-Institutional Partners</div>
-          <div class="impact-desc">Active and upcoming collaborations with Giner Inc., W. L. Gore & Associates, UMN (Prof. Leighton), and Lubrizol.</div>
+          <div class="impact-desc">Active and upcoming collaborations with Giner Inc., Lawrence Berkeley National Laboratory, UMN (Prof. Leighton), and Lubrizol.</div>
         </div>
         <div class="impact-tile">
           <div class="impact-marker">6</div>
           <div class="impact-title">Researchers Mentored</div>
           <div class="impact-desc">Two presented as co-authors at peer-reviewed venues (Bender 2025, Dossa 2024). Plus TA roles in ChemE Thermodynamics and Systems Engineering.</div>
+        </div>
+      </div>
+    </div>
+    <div class="opento-strip">
+      <div class="opento-label">Open To</div>
+      <div class="opento-content">
+        <div class="opento-group">
+          <span class="opento-key">Roles</span>
+          <span class="opento-chip">R&amp;D</span>
+          <span class="opento-chip">Process Development</span>
+          <span class="opento-chip">Scale-Up</span>
+        </div>
+        <div class="opento-divider"></div>
+        <div class="opento-group">
+          <span class="opento-key">Sectors</span>
+          <span class="opento-chip">Green Hydrogen</span>
+          <span class="opento-chip">Energy Storage</span>
+          <span class="opento-chip">Specialty Chemicals</span>
+          <span class="opento-chip">Advanced Materials</span>
         </div>
       </div>
     </div>
@@ -1233,7 +1238,7 @@
         {init:'SZ',name:'Shuo Zhong',role:'Graduate Researcher — MEA assembly & testing',org:'McKone Lab, Pitt'},
         {init:'MP',name:'Milos Pupucevski',role:'Graduate Researcher — MEA fabrication',org:'McKone Lab, Pitt'},
         {init:'GI',name:'Giner Inc.',role:'Industry Partner — MEA benchmarking context & specifications',org:'Giner Inc. (Watertown, MA)'},
-        {init:'JL',name:'Jonathan Lattimer',role:'Industrial Collaborator — AEM membrane & ionomer materials',org:'W. L. Gore & Associates'}
+        {init:'JL',name:'Jonathan Lattimer',role:'Industrial Collaborator — scale-up benchmarking & device testing',org:'Giner Inc. (Watertown, MA)'}
       ]
     },
     p3:{num:'Thrust 03',title:'Transport Modeling',status:'Active · Manuscript in Preparation · 2026',tags:['Effectiveness Factor','COMSOL','RDE','Porous Films','Transport'],
