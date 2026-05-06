@@ -73,7 +73,7 @@
   .home-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:1rem;}
   .navy-tile{background:linear-gradient(135deg,#0f2044,#1a4fad);position:relative;overflow:hidden;}
   .navy-tile svg.topo-bg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:0.12;}
-  .home-welcome{grid-column:1/-1;border-radius:10px;padding:2.4rem 2.2rem;position:relative;overflow:hidden;}
+  .home-welcome{grid-column:1/-1;border-radius:10px;padding:3.5rem 2.2rem;position:relative;overflow:hidden;}
   .home-welcome svg.topo-bg{opacity:0.18;}
   .home-welcome h3{font-size:1.1rem;font-weight:800;color:#fff;margin-bottom:0.4rem;position:relative;}
   .home-welcome p{font-size:0.86rem;color:rgba(255,255,255,0.85);line-height:1.75;margin-bottom:1.2rem;text-align:justify;position:relative;}
@@ -95,8 +95,9 @@
   .impact-section{margin-top:1.5rem;}
   .impact-header{margin-bottom:1.1rem;}
   .impact-header h2{font-size:1.4rem;font-weight:800;color:var(--text);}
-  .impact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
-  .impact-tile{background:rgba(255,255,255,0.92);backdrop-filter:blur(4px);border:1px solid var(--border);border-radius:10px;padding:1.4rem;transition:all 0.2s;position:relative;overflow:hidden;}
+  .impact-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:1rem;}
+  .impact-tile{background:rgba(255,255,255,0.92);backdrop-filter:blur(4px);border:1px solid var(--border);border-radius:10px;padding:1.4rem;transition:all 0.2s;position:relative;overflow:hidden;grid-column:span 2;}
+  .impact-tile:nth-child(4){grid-column-start:2;}
   .impact-tile::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--accent);}
   .impact-tile:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(26,79,173,0.12);}
   .impact-marker{font-size:1.85rem;font-weight:900;color:var(--accent);line-height:1;margin-bottom:0.5rem;letter-spacing:-0.5px;}
@@ -115,10 +116,14 @@
 
   /* ABOUT */
   .about-card p{font-size:0.87rem;color:var(--muted);line-height:1.85;margin-bottom:0.9rem;text-align:justify;}
+  .about-card p:first-of-type{text-align:left;}
 
   /* RESEARCH */
   .res-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;align-items:start;}
   .res-card{border-radius:10px;padding:1.4rem;transition:all 0.3s;position:relative;overflow:hidden;cursor:pointer;border:1px solid rgba(255,255,255,0.08);display:flex;flex-direction:column;}
+  .res-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:rgba(255,255,255,0.45);z-index:2;}
+  .res-card-collab::before{background:var(--gold);}
+  .res-card-prior::before{background:#5cb85c;}
   .res-card:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(15,32,68,0.35);}
   .res-expand{max-height:0;overflow:hidden;transition:max-height 0.4s ease,opacity 0.3s ease;opacity:0;}
   .res-expand.open{max-height:600px;opacity:1;}
@@ -206,6 +211,12 @@
   .aw-card{background:rgba(255,255,255,0.9);backdrop-filter:blur(4px);border:1px solid var(--border);border-radius:10px;padding:1.3rem 1.4rem;transition:all 0.2s;position:relative;overflow:hidden;}
   .aw-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:2px;background:var(--gold);}
   .aw-card:hover{box-shadow:0 4px 16px rgba(200,146,42,0.15);transform:translateY(-2px);}
+  .aw-thumb{display:block;position:relative;border-radius:8px;overflow:hidden;margin-bottom:0.9rem;aspect-ratio:16/9;cursor:pointer;background:#0f1623;}
+  .aw-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.35s ease;}
+  .aw-thumb:hover img{transform:scale(1.04);}
+  .aw-play-overlay{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:46px;height:46px;background:rgba(0,0,0,0.72);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
+  .aw-thumb:hover .aw-play-overlay{background:rgba(0,0,0,0.88);transform:translate(-50%,-50%) scale(1.12);}
+  .aw-play-overlay svg{width:18px;height:18px;fill:white;margin-left:3px;}
   .aw-year{font-size:0.65rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:0.5rem;}
   .aw-t{font-size:0.84rem;font-weight:700;color:var(--text);line-height:1.35;margin-bottom:0.3rem;}
   .aw-o{font-size:0.72rem;color:var(--muted);}
@@ -244,6 +255,8 @@
     .res-grid{grid-template-columns:1fr 1fr;}
     .awards-grid{grid-template-columns:1fr 1fr;}
     .impact-grid{grid-template-columns:1fr 1fr;}
+    .impact-tile{grid-column:auto;}
+    .impact-tile:nth-child(4){grid-column-start:auto;}
     .topo-content>div[style*="grid-template-columns:320px"]{grid-template-columns:1fr !important;}
     .topo-content>div>div:first-child>div:first-child{width:120px !important;height:120px !important;margin:0 auto;}
     .panel-header h2{font-size:1.3rem;}
@@ -255,6 +268,9 @@
     .res-grid{grid-template-columns:1fr;}
     .awards-grid{grid-template-columns:1fr;}
     .impact-grid{grid-template-columns:1fr;}
+    .opento-strip{flex-direction:column;align-items:flex-start;gap:0.6rem;}
+    .opento-content{gap:0.7rem;flex-direction:column;align-items:flex-start;}
+    .opento-divider{display:none;}
     .tab{padding:0.65rem 0.8rem;font-size:0.62rem;}
     .main{padding:1rem 0.8rem;}
     .topo-content{padding:1rem !important;}
@@ -564,7 +580,7 @@
         <div style="font-size:0.68rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin:1.8rem 0 1rem;">Collaborative & Industrial Projects · 3 areas — click any card to expand</div>
 
         <div class="res-grid">
-          <div class="res-card navy-tile" onclick="toggleRes(this)">
+          <div class="res-card res-card-collab navy-tile" onclick="toggleRes(this)">
             <svg class="topo-bg" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><g fill="none" stroke="white" stroke-width="1" opacity="0.18"><path d="M-20,40 Q80,10 160,40 Q240,70 320,30 Q380,5 430,35"/><path d="M-20,80 Q80,50 160,80 Q240,110 320,70 Q380,45 430,75"/><path d="M-20,120 Q80,90 160,120 Q240,150 320,110 Q380,85 430,115"/><path d="M-20,160 Q80,130 160,160 Q240,190 320,150 Q380,125 430,155"/></g></svg>
             <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:0.5rem;">
               <div class="r-num">Collaboration</div>
@@ -580,7 +596,7 @@
             </div>
           </div>
 
-          <div class="res-card navy-tile" onclick="toggleRes(this)">
+          <div class="res-card res-card-collab navy-tile" onclick="toggleRes(this)">
             <svg class="topo-bg" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><g fill="none" stroke="white" stroke-width="1" opacity="0.18"><path d="M-20,40 Q80,10 160,40 Q240,70 320,30 Q380,5 430,35"/><path d="M-20,80 Q80,50 160,80 Q240,110 320,70 Q380,45 430,75"/><path d="M-20,120 Q80,90 160,120 Q240,150 320,110 Q380,85 430,115"/><path d="M-20,160 Q80,130 160,160 Q240,190 320,150 Q380,125 430,155"/></g></svg>
             <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:0.5rem;">
               <div class="r-num">Collaboration</div>
@@ -596,7 +612,7 @@
             </div>
           </div>
 
-          <div class="res-card navy-tile" onclick="toggleRes(this)">
+          <div class="res-card res-card-collab navy-tile" onclick="toggleRes(this)">
             <svg class="topo-bg" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><g fill="none" stroke="white" stroke-width="1" opacity="0.18"><path d="M-20,40 Q80,10 160,40 Q240,70 320,30 Q380,5 430,35"/><path d="M-20,80 Q80,50 160,80 Q240,110 320,70 Q380,45 430,75"/><path d="M-20,120 Q80,90 160,120 Q240,150 320,110 Q380,85 430,115"/><path d="M-20,160 Q80,130 160,160 Q240,190 320,150 Q380,125 430,155"/></g></svg>
             <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:0.5rem;">
               <div class="r-num">Upcoming · Industry</div>
@@ -617,7 +633,7 @@
         <div style="font-size:0.68rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin:1.8rem 0 1rem;">Prior Work · Undergraduate Research</div>
 
         <div class="res-grid">
-          <div class="res-card navy-tile" onclick="toggleRes(this)">
+          <div class="res-card res-card-prior navy-tile" onclick="toggleRes(this)">
             <svg class="topo-bg" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><g fill="none" stroke="white" stroke-width="1" opacity="0.18"><path d="M-20,40 Q80,10 160,40 Q240,70 320,30 Q380,5 430,35"/><path d="M-20,80 Q80,50 160,80 Q240,110 320,70 Q380,45 430,75"/><path d="M-20,120 Q80,90 160,120 Q240,150 320,110 Q380,85 430,115"/><path d="M-20,160 Q80,130 160,160 Q240,190 320,150 Q380,125 430,155"/></g></svg>
             <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:0.5rem;">
               <div class="r-num">Undergraduate · 2020–2022</div>
@@ -1167,7 +1183,7 @@
         <div class="awards-grid">
           <div class="aw-card"><div class="aw-year">Nov. 2025</div><div class="aw-t">CRE Division Best Poster Award</div><div class="aw-o">AIChE Annual Meeting · Boston</div></div>
           <div class="aw-card"><div class="aw-year">Apr. 2026</div><div class="aw-t">Best Scientific Image</div><div class="aw-o">University of Pittsburgh</div></div>
-          <div class="aw-card"><div class="aw-year">Apr. 2025</div><div class="aw-t">Best Scientific Animation</div><div class="aw-o">University of Pittsburgh</div></div>
+          <div class="aw-card"><a href="https://www.youtube.com/watch?v=OmiT5bj0K7U" target="_blank" rel="noopener" class="aw-thumb" title="Watch on YouTube"><img src="https://img.youtube.com/vi/OmiT5bj0K7U/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/OmiT5bj0K7U/hqdefault.jpg';" alt="Best Scientific Animation video thumbnail"/><div class="aw-play-overlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></a><div class="aw-year">Apr. 2025</div><div class="aw-t">Best Scientific Animation</div><div class="aw-o">University of Pittsburgh</div></div>
           <div class="aw-card"><div class="aw-year">Apr. 2025</div><div class="aw-t">Best Research Poster Presentation</div><div class="aw-o">University of Pittsburgh</div></div>
           <div class="aw-card"><div class="aw-year">Apr. 2024</div><div class="aw-t">Best Scientific Journal Art</div><div class="aw-o">University of Pittsburgh</div></div>
           <div class="aw-card"><div class="aw-year">2016 – 2022</div><div class="aw-t">National Merit Scholarship</div><div class="aw-o">Smt. CHM College & ICT Mumbai, India</div></div>
