@@ -214,21 +214,20 @@
   .periodic-legend-swatch.exp{background:linear-gradient(135deg,#0f2044 0%,#1a4fad 100%);}
   .periodic-legend-swatch.pro{background:#dbe6f4;}
   .periodic-legend-swatch.fam{background:transparent;border:1px solid var(--border);}
-  .periodic-block{margin-bottom:1.5rem;}
-  .periodic-block-label{font-size:0.62rem;font-weight:800;color:var(--accent);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:0.55rem;}
-  .periodic-row{display:flex;flex-wrap:wrap;gap:4px;}
-  .periodic-table-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.4rem;}
-  .periodic-side{display:flex;flex-direction:column;gap:1.4rem;}
-  .periodic-tier-row{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:4px;}
-  .periodic-tier-row:last-child{margin-bottom:0;}
-  .pt-tile{width:74px;height:74px;border-radius:6px;position:relative;cursor:default;display:flex;flex-direction:column;justify-content:space-between;padding:5px 6px 4px;transition:transform 0.18s ease,box-shadow 0.18s ease;user-select:none;border:1px solid transparent;box-sizing:border-box;}
-  .pt-tile:hover{transform:scale(1.06);z-index:5;box-shadow:0 6px 18px rgba(15,32,68,0.22);}
-  .pt-tile-num{font-size:0.55rem;font-weight:700;opacity:0.65;line-height:1;}
-  .pt-tile-symbol{font-size:1.4rem;font-weight:800;text-align:center;letter-spacing:-0.5px;line-height:1;margin-top:1px;}
-  .pt-tile-name{font-size:0.46rem;font-weight:700;text-align:center;text-transform:uppercase;letter-spacing:0.3px;line-height:1.15;opacity:0.85;}
+  .periodic-block{margin-bottom:1.6rem;}
+  .periodic-block-label{font-size:0.62rem;font-weight:800;color:var(--accent);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:0.6rem;}
+  .pt-grid{display:grid;grid-template-columns:repeat(18,minmax(0,1fr));gap:4px;max-width:1080px;}
+  .pt-tile{aspect-ratio:1;border-radius:6px;position:relative;cursor:default;display:flex;flex-direction:column;justify-content:space-between;padding:5px 5px 4px;transition:transform 0.18s ease,box-shadow 0.18s ease;user-select:none;border:1px solid transparent;box-sizing:border-box;}
+  .pt-tile:hover{transform:scale(1.08);z-index:5;box-shadow:0 6px 18px rgba(15,32,68,0.22);}
+  .pt-tile-num{font-size:0.5rem;font-weight:700;opacity:0.65;line-height:1;}
+  .pt-tile-symbol{font-size:1.05rem;font-weight:800;text-align:center;letter-spacing:-0.5px;line-height:1;}
+  .pt-tile-name{font-size:0.4rem;font-weight:700;text-align:center;text-transform:uppercase;letter-spacing:0.3px;line-height:1.1;opacity:0.85;}
   .pt-expert{background:linear-gradient(135deg,#0f2044 0%,#1a4fad 100%);color:#fff;}
   .pt-proficient{background:#dbe6f4;color:#0f1623;}
-  .pt-familiar{background:transparent;color:var(--muted);border-color:var(--border);}
+  .pt-familiar{background:#e7ebf3;color:#5a6478;border-style:solid;}
+  .pt-blocks-key{display:flex;flex-wrap:wrap;gap:1.4rem;margin-top:1.2rem;padding:0.8rem 0;border-top:1px solid var(--border);}
+  .pt-blocks-key-item{font-size:0.72rem;color:var(--muted);display:flex;align-items:center;gap:0.5rem;}
+  .pt-blocks-key-range{font-weight:800;color:var(--accent);font-variant-numeric:tabular-nums;background:rgba(26,79,173,0.08);padding:2px 8px;border-radius:4px;letter-spacing:0.3px;}
   .periodic-info{margin-top:1.4rem;padding:1rem 1.2rem;background:rgba(255,255,255,0.94);border:1px solid var(--border);border-radius:8px;border-left:3px solid var(--accent);min-height:90px;transition:all 0.12s ease;}
   .periodic-info-hint{font-size:0.78rem;color:var(--muted);font-style:italic;line-height:1.6;}
   .periodic-info-tier{display:inline-block;font-size:0.6rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;padding:3px 9px;border-radius:3px;margin-bottom:0.55rem;background:var(--accent2);color:var(--accent);}
@@ -236,14 +235,18 @@
   .periodic-info-symbol{font-size:1.5rem;font-weight:900;color:var(--accent);letter-spacing:-0.5px;}
   .periodic-info-name{font-size:0.95rem;font-weight:700;color:var(--text);}
   .periodic-info-context{font-size:0.82rem;color:var(--muted);line-height:1.6;}
-  @media(max-width:768px){
-    .pt-tile{width:62px;height:62px;}
+  .block-index{display:grid;grid-template-columns:repeat(2,1fr);gap:0.55rem 1.2rem;margin-top:1.4rem;padding:0.95rem 1.1rem;background:rgba(255,255,255,0.7);border:1px solid var(--border);border-radius:6px;}
+  .block-index-item{display:flex;align-items:baseline;gap:0.7rem;font-size:0.78rem;color:var(--text);}
+  .block-index-num{font-weight:800;color:var(--accent);font-size:0.7rem;font-family:'IBM Plex Mono',ui-monospace,monospace;letter-spacing:0.5px;flex-shrink:0;}
+  .block-index-name{font-weight:600;}
+  @media(max-width:900px){
+    .pt-grid{display:flex;flex-wrap:wrap;gap:4px;}
+    .pt-grid .pt-tile{width:62px;height:62px;aspect-ratio:auto;}
     .pt-tile-symbol{font-size:1.15rem;}
     .pt-tile-name{font-size:0.4rem;}
-    .periodic-table-grid{grid-template-columns:1fr;gap:1.5rem;}
   }
   @media(max-width:480px){
-    .pt-tile{width:54px;height:54px;}
+    .pt-grid .pt-tile{width:54px;height:54px;}
     .pt-tile-symbol{font-size:1rem;}
     .pt-tile-name{font-size:0.36rem;}
     .periodic-block-label{font-size:0.55rem;}
@@ -919,117 +922,75 @@
         </g>
       </svg>
       <div class="topo-content">
-        <!-- TIER LEGEND -->
-        <div style="display:flex;gap:1rem;margin-bottom:1.2rem;flex-wrap:wrap;">
-          <div style="display:flex;align-items:center;gap:0.5rem;"><div style="width:10px;height:10px;border-radius:50%;background:#1a4fad;"></div><span style="font-size:0.75rem;font-weight:700;color:var(--text);">Expert</span><span style="font-size:0.72rem;color:var(--muted);">— independent, daily use, can teach</span></div>
-          <div style="display:flex;align-items:center;gap:0.5rem;"><div style="width:10px;height:10px;border-radius:50%;background:#5a8fd4;"></div><span style="font-size:0.75rem;font-weight:700;color:var(--text);">Proficient</span><span style="font-size:0.72rem;color:var(--muted);">— regular use, works independently</span></div>
-          <div style="display:flex;align-items:center;gap:0.5rem;"><div style="width:10px;height:10px;border-radius:50%;background:#b0c8e8;"></div><span style="font-size:0.75rem;font-weight:700;color:var(--text);">Familiar</span><span style="font-size:0.72rem;color:var(--muted);">— used in project work, needs ramp-up</span></div>
-        </div>
         <div class="periodic-wrap" onmouseleave="resetSkillInfo()">
           <div class="periodic-legend">
-            <span style="font-weight:700;color:var(--text);text-transform:uppercase;letter-spacing:1px;font-size:0.65rem;">Proficiency</span>
-            <span class="periodic-legend-item"><span class="periodic-legend-swatch exp"></span> Expert · daily use, can teach</span>
-            <span class="periodic-legend-item"><span class="periodic-legend-swatch pro"></span> Proficient · works independently</span>
-            <span class="periodic-legend-item"><span class="periodic-legend-swatch fam"></span> Familiar · used in project work</span>
+            <span class="periodic-legend-item"><span class="periodic-legend-swatch exp"></span> Expert</span>
+            <span class="periodic-legend-item"><span class="periodic-legend-swatch pro"></span> Proficient</span>
+            <span class="periodic-legend-item"><span class="periodic-legend-swatch fam"></span> Familiar</span>
           </div>
 
-          <div class="periodic-table-grid">
-            <div class="periodic-side">
-              <div class="periodic-block">
-                <div class="periodic-block-label">Block 01 · Electrochemical &amp; Analytical</div>
-                <div class="periodic-tier-row">
-                  <div class="pt-tile pt-expert" onmouseenter="showSkillInfo(this)" data-name="Cyclic / Linear Voltammetry" data-tier="Expert" data-context="Daily use for HER kinetics, Tafel analysis, and activity benchmarking on Ni–Mo cathodes."><div class="pt-tile-num">1</div><div class="pt-tile-symbol">Vl</div><div class="pt-tile-name">CV/LSV</div></div>
-                  <div class="pt-tile pt-expert" onmouseenter="showSkillInfo(this)" data-name="Electrochemical Impedance Spectroscopy" data-tier="Expert" data-context="Routine impedance characterization across three-electrode and MEA configurations."><div class="pt-tile-num">2</div><div class="pt-tile-symbol">Ei</div><div class="pt-tile-name">EIS</div></div>
-                  <div class="pt-tile pt-expert" onmouseenter="showSkillInfo(this)" data-name="RDE / GDE Half-Cell Testing" data-tier="Expert" data-context="Designed custom GDE half-cell from first principles for AEM electrolyzer benchmarking."><div class="pt-tile-num">3</div><div class="pt-tile-symbol">Rg</div><div class="pt-tile-name">RDE/GDE</div></div>
-                  <div class="pt-tile pt-expert" onmouseenter="showSkillInfo(this)" data-name="X-Ray Diffraction" data-tier="Expert" data-context="Phase identification and crystallinity tracking across catalyst aging studies."><div class="pt-tile-num">4</div><div class="pt-tile-symbol">Xr</div><div class="pt-tile-name">XRD</div></div>
-                  <div class="pt-tile pt-expert" onmouseenter="showSkillInfo(this)" data-name="ICP-OES" data-tier="Expert" data-context="Ni and Mo dissolution quantification in aging electrolytes and post-test rinses."><div class="pt-tile-num">5</div><div class="pt-tile-symbol">Ic</div><div class="pt-tile-name">ICP-OES</div></div>
-                  <div class="pt-tile pt-expert" onmouseenter="showSkillInfo(this)" data-name="SEM / TEM Microscopy" data-tier="Expert" data-context="Particle size, morphology, and dispersion analysis on Ni–Mo/C composites."><div class="pt-tile-num">6</div><div class="pt-tile-symbol">Em</div><div class="pt-tile-name">SEM/TEM</div></div>
-                </div>
-                <div class="periodic-tier-row">
-                  <div class="pt-tile pt-proficient" onmouseenter="showSkillInfo(this)" data-name="X-Ray Photoelectron Spectroscopy" data-tier="Proficient" data-context="Surface oxidation state characterization for shelf-life and degradation studies."><div class="pt-tile-num">7</div><div class="pt-tile-symbol">Xp</div><div class="pt-tile-name">XPS</div></div>
-                  <div class="pt-tile pt-proficient" onmouseenter="showSkillInfo(this)" data-name="Raman Spectroscopy" data-tier="Proficient" data-context="Carbon support characterization and crystallinity analysis."><div class="pt-tile-num">8</div><div class="pt-tile-symbol">Rm</div><div class="pt-tile-name">Raman</div></div>
-                  <div class="pt-tile pt-proficient" onmouseenter="showSkillInfo(this)" data-name="Fourier Transform Infrared Spectroscopy" data-tier="Proficient" data-context="Ionomer characterization and surface functional group identification."><div class="pt-tile-num">9</div><div class="pt-tile-symbol">Ft</div><div class="pt-tile-name">FTIR</div></div>
-                  <div class="pt-tile pt-proficient" onmouseenter="showSkillInfo(this)" data-name="Thermogravimetric Analysis" data-tier="Proficient" data-context="Thermal stability and metal loading verification on supported catalysts."><div class="pt-tile-num">10</div><div class="pt-tile-symbol">Tg</div><div class="pt-tile-name">TGA</div></div>
-                  <div class="pt-tile pt-proficient" onmouseenter="showSkillInfo(this)" data-name="Energy Dispersive X-Ray" data-tier="Proficient" data-context="Elemental composition mapping for bi- and tri-metallic catalysts."><div class="pt-tile-num">11</div><div class="pt-tile-symbol">Ed</div><div class="pt-tile-name">EDX</div></div>
-                  <div class="pt-tile pt-proficient" onmouseenter="showSkillInfo(this)" data-name="UV-Visible Spectroscopy" data-tier="Proficient" data-context="Solution-phase concentration tracking during synthesis."><div class="pt-tile-num">12</div><div class="pt-tile-symbol">Uv</div><div class="pt-tile-name">UV-Vis</div></div>
-                  <div class="pt-tile pt-proficient" onmouseenter="showSkillInfo(this)" data-name="Gas Chromatography–Mass Spectrometry" data-tier="Proficient" data-context="Product identification in CO₂ cyclocondensation work (undergraduate research)."><div class="pt-tile-num">13</div><div class="pt-tile-symbol">Gc</div><div class="pt-tile-name">GC-MS</div></div>
-                </div>
-                <div class="periodic-tier-row">
-                  <div class="pt-tile pt-familiar" onmouseenter="showSkillInfo(this)" data-name="Nuclear Magnetic Resonance" data-tier="Familiar" data-context="Structure verification for organic intermediates."><div class="pt-tile-num">14</div><div class="pt-tile-symbol">Nm</div><div class="pt-tile-name">NMR</div></div>
-                  <div class="pt-tile pt-familiar" onmouseenter="showSkillInfo(this)" data-name="X-Ray Fluorescence" data-tier="Familiar" data-context="Bulk elemental analysis and quality control."><div class="pt-tile-num">15</div><div class="pt-tile-symbol">Xf</div><div class="pt-tile-name">XRF</div></div>
-                  <div class="pt-tile pt-familiar" onmouseenter="showSkillInfo(this)" data-name="Optical Surface Profilometry" data-tier="Familiar" data-context="Catalyst film thickness measurements on RDE tips."><div class="pt-tile-num">16</div><div class="pt-tile-symbol">Pf</div><div class="pt-tile-name">PROFIL</div></div>
-                  <div class="pt-tile pt-familiar" onmouseenter="showSkillInfo(this)" data-name="SQUID Magnetometry" data-tier="Familiar" data-context="Magnetic signature analysis for Ni–Mo aging diagnostic (UMN collaboration)."><div class="pt-tile-num">17</div><div class="pt-tile-symbol">Sq</div><div class="pt-tile-name">SQUID</div></div>
-                </div>
-              </div>
-              <div class="periodic-block">
-                <div class="periodic-block-label">Block 03 · Software &amp; Computation</div>
-                <div class="periodic-tier-row">
-                  <div class="pt-tile pt-expert" onmouseenter="showSkillInfo(this)" data-name="Python" data-tier="Expert" data-context="Data analysis pipeline for kinetic and impedance data — pandas, scipy, matplotlib."><div class="pt-tile-num">30</div><div class="pt-tile-symbol">Py</div><div class="pt-tile-name">PYTHON</div></div>
-                  <div class="pt-tile pt-expert" onmouseenter="showSkillInfo(this)" data-name="MATLAB" data-tier="Expert" data-context="Simulation and modeling of electrochemical systems."><div class="pt-tile-num">31</div><div class="pt-tile-symbol">Ma</div><div class="pt-tile-name">MATLAB</div></div>
-                  <div class="pt-tile pt-expert" onmouseenter="showSkillInfo(this)" data-name="OriginPro" data-tier="Expert" data-context="Daily plot generation and statistical analysis for publications."><div class="pt-tile-num">32</div><div class="pt-tile-symbol">Op</div><div class="pt-tile-name">ORIGIN</div></div>
-                  <div class="pt-tile pt-expert" onmouseenter="showSkillInfo(this)" data-name="LaTeX" data-tier="Expert" data-context="Manuscript preparation including ACS Energy Letters submission."><div class="pt-tile-num">33</div><div class="pt-tile-symbol">La</div><div class="pt-tile-name">LATEX</div></div>
-                  <div class="pt-tile pt-expert" onmouseenter="showSkillInfo(this)" data-name="Adobe Illustrator" data-tier="Expert" data-context="Figure assembly and graphical abstract design — Best Scientific Animation award."><div class="pt-tile-num">34</div><div class="pt-tile-symbol">Ai</div><div class="pt-tile-name">ILLUS</div></div>
-                </div>
-                <div class="periodic-tier-row">
-                  <div class="pt-tile pt-proficient" onmouseenter="showSkillInfo(this)" data-name="COMSOL Multiphysics" data-tier="Proficient" data-context="FEM modeling of mass transport in porous catalyst films (Effectiveness Factor paper)."><div class="pt-tile-num">35</div><div class="pt-tile-symbol">Cm</div><div class="pt-tile-name">COMSOL</div></div>
-                  <div class="pt-tile pt-proficient" onmouseenter="showSkillInfo(this)" data-name="ImageJ / VESTA" data-tier="Proficient" data-context="Microscopy analysis and crystal structure visualization."><div class="pt-tile-num">36</div><div class="pt-tile-symbol">Ij</div><div class="pt-tile-name">IMAGEJ</div></div>
-                  <div class="pt-tile pt-proficient" onmouseenter="showSkillInfo(this)" data-name="ChemCAD / DWSIM" data-tier="Proficient" data-context="Process flow modeling — undergraduate ETP design at Gharda Chemicals."><div class="pt-tile-num">37</div><div class="pt-tile-symbol">Cc</div><div class="pt-tile-name">CHEMCAD</div></div>
-                </div>
-                <div class="periodic-tier-row">
-                  <div class="pt-tile pt-familiar" onmouseenter="showSkillInfo(this)" data-name="AutoCAD" data-tier="Familiar" data-context="2D engineering drawings."><div class="pt-tile-num">38</div><div class="pt-tile-symbol">Ac</div><div class="pt-tile-name">AUTOCAD</div></div>
-                  <div class="pt-tile pt-familiar" onmouseenter="showSkillInfo(this)" data-name="Fusion 360" data-tier="Familiar" data-context="3D part design for custom test fixtures."><div class="pt-tile-num">39</div><div class="pt-tile-symbol">F3</div><div class="pt-tile-name">FUSION</div></div>
-                  <div class="pt-tile pt-familiar" onmouseenter="showSkillInfo(this)" data-name="Aspen Plus" data-tier="Familiar" data-context="Process simulation exposure."><div class="pt-tile-num">40</div><div class="pt-tile-symbol">As</div><div class="pt-tile-name">ASPEN</div></div>
-                </div>
-              </div>
-            </div>
-            <div class="periodic-side">
-              <div class="periodic-block">
-                <div class="periodic-block-label">Block 02 · Synthesis &amp; Fabrication</div>
-                <div class="periodic-tier-row">
-                  <div class="pt-tile pt-expert" onmouseenter="showSkillInfo(this)" data-name="Co-Precipitation" data-tier="Expert" data-context="Primary Ni–Mo/C synthesis route — scaled from milligrams to tens of grams."><div class="pt-tile-num">18</div><div class="pt-tile-symbol">Cp</div><div class="pt-tile-name">CO-PPT</div></div>
-                  <div class="pt-tile pt-expert" onmouseenter="showSkillInfo(this)" data-name="Thermal Reduction" data-tier="Expert" data-context="Tube furnace reduction of Mo precursor to active phase."><div class="pt-tile-num">19</div><div class="pt-tile-symbol">Tr</div><div class="pt-tile-name">TH-RED</div></div>
-                  <div class="pt-tile pt-expert" onmouseenter="showSkillInfo(this)" data-name="Wet Chemistry" data-tier="Expert" data-context="End-to-end synthesis from precursor to finished catalyst powder."><div class="pt-tile-num">20</div><div class="pt-tile-symbol">Wc</div><div class="pt-tile-name">WET-CH</div></div>
-                  <div class="pt-tile pt-expert" onmouseenter="showSkillInfo(this)" data-name="Catalyst Scale-Up" data-tier="Expert" data-context="1000× scale-up delivered to Giner Inc. with reproducible activity."><div class="pt-tile-num">21</div><div class="pt-tile-symbol">Su</div><div class="pt-tile-name">SCALE-UP</div></div>
-                  <div class="pt-tile pt-expert" onmouseenter="showSkillInfo(this)" data-name="MEA Fabrication" data-tier="Expert" data-context="Custom MEA assembly for AEM electrolyzer benchmarking."><div class="pt-tile-num">22</div><div class="pt-tile-symbol">Mf</div><div class="pt-tile-name">MEA</div></div>
-                </div>
-                <div class="periodic-tier-row">
-                  <div class="pt-tile pt-proficient" onmouseenter="showSkillInfo(this)" data-name="Electrodeposition" data-tier="Proficient" data-context="Ni–Mo film growth on rotating disk electrodes."><div class="pt-tile-num">23</div><div class="pt-tile-symbol">El</div><div class="pt-tile-name">E-DEP</div></div>
-                  <div class="pt-tile pt-proficient" onmouseenter="showSkillInfo(this)" data-name="Hydrothermal Synthesis" data-tier="Proficient" data-context="Tungsten bronze synthesis (collaborative project)."><div class="pt-tile-num">24</div><div class="pt-tile-symbol">Hy</div><div class="pt-tile-name">HYDRO</div></div>
-                  <div class="pt-tile pt-proficient" onmouseenter="showSkillInfo(this)" data-name="Spray Coating" data-tier="Proficient" data-context="Catalyst ink deposition on GDL substrates."><div class="pt-tile-num">25</div><div class="pt-tile-symbol">Sy</div><div class="pt-tile-name">SPRAY</div></div>
-                  <div class="pt-tile pt-proficient" onmouseenter="showSkillInfo(this)" data-name="Glovebox Operations" data-tier="Proficient" data-context="Air-sensitive precursor handling and storage."><div class="pt-tile-num">26</div><div class="pt-tile-symbol">Gb</div><div class="pt-tile-name">GLOVE</div></div>
-                  <div class="pt-tile pt-proficient" onmouseenter="showSkillInfo(this)" data-name="3D Printing (FDM / SLA)" data-tier="Proficient" data-context="Custom test rig components — FDM and SLA workflows for lab fixtures."><div class="pt-tile-num">27</div><div class="pt-tile-symbol">3D</div><div class="pt-tile-name">PRINT</div></div>
-                </div>
-                <div class="periodic-tier-row">
-                  <div class="pt-tile pt-familiar" onmouseenter="showSkillInfo(this)" data-name="PVD / Sputtering" data-tier="Familiar" data-context="Thin-film deposition exposure."><div class="pt-tile-num">28</div><div class="pt-tile-symbol">Pv</div><div class="pt-tile-name">PVD</div></div>
-                  <div class="pt-tile pt-familiar" onmouseenter="showSkillInfo(this)" data-name="Autoclave Reactors" data-tier="Familiar" data-context="High-pressure synthesis at undergraduate institution."><div class="pt-tile-num">29</div><div class="pt-tile-symbol">Au</div><div class="pt-tile-name">AUTOCL</div></div>
-                </div>
-              </div>
-              <div class="periodic-block">
-                <div class="periodic-block-label">Block 04 · Teaching &amp; Leadership</div>
-                <div class="periodic-tier-row">
-                  <div class="pt-tile pt-expert" onmouseenter="showSkillInfo(this)" data-name="Undergraduate Mentorship" data-tier="Expert" data-context="Mentored 6 undergraduates — 2 first-authored peer-reviewed conference papers."><div class="pt-tile-num">41</div><div class="pt-tile-symbol">Um</div><div class="pt-tile-name">MENTOR</div></div>
-                  <div class="pt-tile pt-expert" onmouseenter="showSkillInfo(this)" data-name="Scientific Communication" data-tier="Expert" data-context="Best Scientific Animation (2025), Best Scientific Image (2026), Best Journal Art (2024)."><div class="pt-tile-num">42</div><div class="pt-tile-symbol">Sc</div><div class="pt-tile-name">SCI-COMM</div></div>
-                  <div class="pt-tile pt-expert" onmouseenter="showSkillInfo(this)" data-name="Technical Presentation" data-tier="Expert" data-context="16 conferences across electrochemistry, materials, and engineering venues."><div class="pt-tile-num">43</div><div class="pt-tile-symbol">Tp</div><div class="pt-tile-name">PRESENT</div></div>
-                </div>
-                <div class="periodic-tier-row">
-                  <div class="pt-tile pt-proficient" onmouseenter="showSkillInfo(this)" data-name="TA — ChE Thermodynamics" data-tier="Proficient" data-context="ChE0200 Chemical Engineering Thermodynamics — Spring 2024 and 2025."><div class="pt-tile-num">44</div><div class="pt-tile-symbol">Th</div><div class="pt-tile-name">TA-THER</div></div>
-                  <div class="pt-tile pt-proficient" onmouseenter="showSkillInfo(this)" data-name="TA — Systems Engineering" data-tier="Proficient" data-context="ChE0500 Systems Engineering &amp; Controls — Fall 2025."><div class="pt-tile-num">45</div><div class="pt-tile-symbol">Se</div><div class="pt-tile-name">TA-SYS</div></div>
-                  <div class="pt-tile pt-proficient" onmouseenter="showSkillInfo(this)" data-name="Session Chairing" data-tier="Proficient" data-context="ECS Seattle Spring 2026."><div class="pt-tile-num">46</div><div class="pt-tile-symbol">Ch</div><div class="pt-tile-name">CHAIR</div></div>
-                  <div class="pt-tile pt-proficient" onmouseenter="showSkillInfo(this)" data-name="Graduate Mentorship" data-tier="Proficient" data-context="Peer mentorship and orientation support for incoming graduate students."><div class="pt-tile-num">47</div><div class="pt-tile-symbol">Gm</div><div class="pt-tile-name">GRAD-MN</div></div>
-                </div>
-                <div class="periodic-tier-row">
-                  <div class="pt-tile pt-familiar" onmouseenter="showSkillInfo(this)" data-name="Curriculum Design" data-tier="Familiar" data-context="Co-developed lab content for thermodynamics course."><div class="pt-tile-num">48</div><div class="pt-tile-symbol">Cd</div><div class="pt-tile-name">CURRIC</div></div>
-                  <div class="pt-tile pt-familiar" onmouseenter="showSkillInfo(this)" data-name="Grant Writing" data-tier="Familiar" data-context="Contributing author on collaborative research proposals."><div class="pt-tile-num">49</div><div class="pt-tile-symbol">Gw</div><div class="pt-tile-name">GRANT</div></div>
-                </div>
-              </div>
-            </div>
+          <div class="pt-grid">
+              <div class="pt-tile pt-expert" style="grid-column:1;" onmouseenter="showSkillInfo(this)" data-name="Cyclic / Linear Voltammetry" data-tier="Expert" data-context="Daily use for HER kinetics, Tafel analysis, and activity benchmarking on Ni–Mo cathodes."><div class="pt-tile-num">1</div><div class="pt-tile-symbol">Vl</div><div class="pt-tile-name">CV/LSV</div></div>
+              <div class="pt-tile pt-expert" style="grid-column:18;" onmouseenter="showSkillInfo(this)" data-name="Electrochemical Impedance Spectroscopy" data-tier="Expert" data-context="Routine impedance characterization across three-electrode and MEA configurations."><div class="pt-tile-num">2</div><div class="pt-tile-symbol">Ei</div><div class="pt-tile-name">EIS</div></div>
+              <div class="pt-tile pt-expert" style="grid-column:1;" onmouseenter="showSkillInfo(this)" data-name="RDE / GDE Half-Cell Testing" data-tier="Expert" data-context="Designed custom GDE half-cell from first principles for AEM electrolyzer benchmarking."><div class="pt-tile-num">3</div><div class="pt-tile-symbol">Rg</div><div class="pt-tile-name">RDE/GDE</div></div>
+              <div class="pt-tile pt-expert" style="grid-column:2;" onmouseenter="showSkillInfo(this)" data-name="X-Ray Diffraction" data-tier="Expert" data-context="Phase identification and crystallinity tracking across catalyst aging studies."><div class="pt-tile-num">4</div><div class="pt-tile-symbol">Xr</div><div class="pt-tile-name">XRD</div></div>
+              <div class="pt-tile pt-expert" style="grid-column:13;" onmouseenter="showSkillInfo(this)" data-name="ICP-OES" data-tier="Expert" data-context="Ni and Mo dissolution quantification in aging electrolytes and post-test rinses."><div class="pt-tile-num">5</div><div class="pt-tile-symbol">Ic</div><div class="pt-tile-name">ICP-OES</div></div>
+              <div class="pt-tile pt-expert" style="grid-column:14;" onmouseenter="showSkillInfo(this)" data-name="SEM / TEM Microscopy" data-tier="Expert" data-context="Particle size, morphology, and dispersion analysis on Ni–Mo/C composites."><div class="pt-tile-num">6</div><div class="pt-tile-symbol">Em</div><div class="pt-tile-name">SEM/TEM</div></div>
+              <div class="pt-tile pt-proficient" style="grid-column:15;" onmouseenter="showSkillInfo(this)" data-name="X-Ray Photoelectron Spectroscopy" data-tier="Proficient" data-context="Surface oxidation state characterization for shelf-life and degradation studies."><div class="pt-tile-num">7</div><div class="pt-tile-symbol">Xp</div><div class="pt-tile-name">XPS</div></div>
+              <div class="pt-tile pt-proficient" style="grid-column:16;" onmouseenter="showSkillInfo(this)" data-name="Raman Spectroscopy" data-tier="Proficient" data-context="Carbon support characterization and crystallinity analysis."><div class="pt-tile-num">8</div><div class="pt-tile-symbol">Rm</div><div class="pt-tile-name">Raman</div></div>
+              <div class="pt-tile pt-proficient" style="grid-column:17;" onmouseenter="showSkillInfo(this)" data-name="Fourier Transform Infrared Spectroscopy" data-tier="Proficient" data-context="Ionomer characterization and surface functional group identification."><div class="pt-tile-num">9</div><div class="pt-tile-symbol">Ft</div><div class="pt-tile-name">FTIR</div></div>
+              <div class="pt-tile pt-proficient" style="grid-column:18;" onmouseenter="showSkillInfo(this)" data-name="Thermogravimetric Analysis" data-tier="Proficient" data-context="Thermal stability and metal loading verification on supported catalysts."><div class="pt-tile-num">10</div><div class="pt-tile-symbol">Tg</div><div class="pt-tile-name">TGA</div></div>
+              <div class="pt-tile pt-proficient" style="grid-column:1;" onmouseenter="showSkillInfo(this)" data-name="Energy Dispersive X-Ray" data-tier="Proficient" data-context="Elemental composition mapping for bi- and tri-metallic catalysts."><div class="pt-tile-num">11</div><div class="pt-tile-symbol">Ed</div><div class="pt-tile-name">EDX</div></div>
+              <div class="pt-tile pt-proficient" style="grid-column:2;" onmouseenter="showSkillInfo(this)" data-name="UV-Visible Spectroscopy" data-tier="Proficient" data-context="Solution-phase concentration tracking during synthesis."><div class="pt-tile-num">12</div><div class="pt-tile-symbol">Uv</div><div class="pt-tile-name">UV-Vis</div></div>
+              <div class="pt-tile pt-proficient" style="grid-column:13;" onmouseenter="showSkillInfo(this)" data-name="Gas Chromatography–Mass Spectrometry" data-tier="Proficient" data-context="Product identification in CO₂ cyclocondensation work (undergraduate research)."><div class="pt-tile-num">13</div><div class="pt-tile-symbol">Gc</div><div class="pt-tile-name">GC-MS</div></div>
+              <div class="pt-tile pt-familiar" style="grid-column:14;" onmouseenter="showSkillInfo(this)" data-name="Nuclear Magnetic Resonance" data-tier="Familiar" data-context="Structure verification for organic intermediates."><div class="pt-tile-num">14</div><div class="pt-tile-symbol">Nm</div><div class="pt-tile-name">NMR</div></div>
+              <div class="pt-tile pt-familiar" style="grid-column:15;" onmouseenter="showSkillInfo(this)" data-name="X-Ray Fluorescence" data-tier="Familiar" data-context="Bulk elemental analysis and quality control."><div class="pt-tile-num">15</div><div class="pt-tile-symbol">Xf</div><div class="pt-tile-name">XRF</div></div>
+              <div class="pt-tile pt-familiar" style="grid-column:16;" onmouseenter="showSkillInfo(this)" data-name="Optical Surface Profilometry" data-tier="Familiar" data-context="Catalyst film thickness measurements on RDE tips."><div class="pt-tile-num">16</div><div class="pt-tile-symbol">Pf</div><div class="pt-tile-name">PROFIL</div></div>
+              <div class="pt-tile pt-expert" style="grid-column:17;" onmouseenter="showSkillInfo(this)" data-name="Co-Precipitation" data-tier="Expert" data-context="Primary Ni–Mo/C synthesis route — scaled from milligrams to tens of grams."><div class="pt-tile-num">17</div><div class="pt-tile-symbol">Cp</div><div class="pt-tile-name">CO-PPT</div></div>
+              <div class="pt-tile pt-expert" style="grid-column:18;" onmouseenter="showSkillInfo(this)" data-name="Thermal Reduction" data-tier="Expert" data-context="Tube furnace reduction of Mo precursor to active phase."><div class="pt-tile-num">18</div><div class="pt-tile-symbol">Tr</div><div class="pt-tile-name">TH-RED</div></div>
+              <div class="pt-tile pt-expert" style="grid-column:1;" onmouseenter="showSkillInfo(this)" data-name="Wet Chemistry" data-tier="Expert" data-context="End-to-end synthesis from precursor to finished catalyst powder."><div class="pt-tile-num">19</div><div class="pt-tile-symbol">Wc</div><div class="pt-tile-name">WET-CH</div></div>
+              <div class="pt-tile pt-expert" style="grid-column:2;" onmouseenter="showSkillInfo(this)" data-name="Catalyst Scale-Up" data-tier="Expert" data-context="1000× scale-up delivered to Giner Inc. with reproducible activity."><div class="pt-tile-num">20</div><div class="pt-tile-symbol">Su</div><div class="pt-tile-name">SCALE-UP</div></div>
+              <div class="pt-tile pt-expert" style="grid-column:3;" onmouseenter="showSkillInfo(this)" data-name="MEA Fabrication" data-tier="Expert" data-context="Custom MEA assembly for AEM electrolyzer benchmarking."><div class="pt-tile-num">21</div><div class="pt-tile-symbol">Mf</div><div class="pt-tile-name">MEA</div></div>
+              <div class="pt-tile pt-proficient" style="grid-column:4;" onmouseenter="showSkillInfo(this)" data-name="Electrodeposition" data-tier="Proficient" data-context="Ni–Mo film growth on rotating disk electrodes."><div class="pt-tile-num">22</div><div class="pt-tile-symbol">El</div><div class="pt-tile-name">E-DEP</div></div>
+              <div class="pt-tile pt-proficient" style="grid-column:5;" onmouseenter="showSkillInfo(this)" data-name="Hydrothermal Synthesis" data-tier="Proficient" data-context="Tungsten bronze synthesis (collaborative project)."><div class="pt-tile-num">23</div><div class="pt-tile-symbol">Hy</div><div class="pt-tile-name">HYDRO</div></div>
+              <div class="pt-tile pt-proficient" style="grid-column:6;" onmouseenter="showSkillInfo(this)" data-name="Spray Coating" data-tier="Proficient" data-context="Catalyst ink deposition on GDL substrates."><div class="pt-tile-num">24</div><div class="pt-tile-symbol">Sy</div><div class="pt-tile-name">SPRAY</div></div>
+              <div class="pt-tile pt-proficient" style="grid-column:7;" onmouseenter="showSkillInfo(this)" data-name="Glovebox Operations" data-tier="Proficient" data-context="Air-sensitive precursor handling and storage."><div class="pt-tile-num">25</div><div class="pt-tile-symbol">Gb</div><div class="pt-tile-name">GLOVE</div></div>
+              <div class="pt-tile pt-proficient" style="grid-column:8;" onmouseenter="showSkillInfo(this)" data-name="3D Printing (FDM / SLA)" data-tier="Proficient" data-context="Custom test rig components — FDM and SLA workflows for lab fixtures."><div class="pt-tile-num">26</div><div class="pt-tile-symbol">3D</div><div class="pt-tile-name">PRINT</div></div>
+              <div class="pt-tile pt-familiar" style="grid-column:9;" onmouseenter="showSkillInfo(this)" data-name="PVD / Sputtering" data-tier="Familiar" data-context="Thin-film deposition exposure."><div class="pt-tile-num">27</div><div class="pt-tile-symbol">Pv</div><div class="pt-tile-name">PVD</div></div>
+              <div class="pt-tile pt-familiar" style="grid-column:10;" onmouseenter="showSkillInfo(this)" data-name="Autoclave Reactors" data-tier="Familiar" data-context="High-pressure synthesis at undergraduate institution."><div class="pt-tile-num">28</div><div class="pt-tile-symbol">Au</div><div class="pt-tile-name">AUTOCL</div></div>
+              <div class="pt-tile pt-expert" style="grid-column:11;" onmouseenter="showSkillInfo(this)" data-name="Python" data-tier="Expert" data-context="Data analysis pipeline for kinetic and impedance data — pandas, scipy, matplotlib."><div class="pt-tile-num">29</div><div class="pt-tile-symbol">Py</div><div class="pt-tile-name">PYTHON</div></div>
+              <div class="pt-tile pt-expert" style="grid-column:12;" onmouseenter="showSkillInfo(this)" data-name="MATLAB" data-tier="Expert" data-context="Simulation and modeling of electrochemical systems."><div class="pt-tile-num">30</div><div class="pt-tile-symbol">Ma</div><div class="pt-tile-name">MATLAB</div></div>
+              <div class="pt-tile pt-expert" style="grid-column:13;" onmouseenter="showSkillInfo(this)" data-name="OriginPro" data-tier="Expert" data-context="Daily plot generation and statistical analysis for publications."><div class="pt-tile-num">31</div><div class="pt-tile-symbol">Op</div><div class="pt-tile-name">ORIGIN</div></div>
+              <div class="pt-tile pt-expert" style="grid-column:14;" onmouseenter="showSkillInfo(this)" data-name="LaTeX" data-tier="Expert" data-context="Manuscript preparation including ACS Energy Letters submission."><div class="pt-tile-num">32</div><div class="pt-tile-symbol">La</div><div class="pt-tile-name">LATEX</div></div>
+              <div class="pt-tile pt-expert" style="grid-column:15;" onmouseenter="showSkillInfo(this)" data-name="Adobe Illustrator" data-tier="Expert" data-context="Figure assembly and graphical abstract design — Best Scientific Animation award."><div class="pt-tile-num">33</div><div class="pt-tile-symbol">Ai</div><div class="pt-tile-name">ILLUS</div></div>
+              <div class="pt-tile pt-proficient" style="grid-column:16;" onmouseenter="showSkillInfo(this)" data-name="COMSOL Multiphysics" data-tier="Proficient" data-context="FEM modeling of mass transport in porous catalyst films (Effectiveness Factor paper)."><div class="pt-tile-num">34</div><div class="pt-tile-symbol">Cm</div><div class="pt-tile-name">COMSOL</div></div>
+              <div class="pt-tile pt-proficient" style="grid-column:17;" onmouseenter="showSkillInfo(this)" data-name="ImageJ / VESTA" data-tier="Proficient" data-context="Microscopy analysis and crystal structure visualization."><div class="pt-tile-num">35</div><div class="pt-tile-symbol">Ij</div><div class="pt-tile-name">IMAGEJ</div></div>
+              <div class="pt-tile pt-proficient" style="grid-column:18;" onmouseenter="showSkillInfo(this)" data-name="ChemCAD / DWSIM" data-tier="Proficient" data-context="Process flow modeling — undergraduate ETP design at Gharda Chemicals."><div class="pt-tile-num">36</div><div class="pt-tile-symbol">Cc</div><div class="pt-tile-name">CHEMCAD</div></div>
+              <div class="pt-tile pt-familiar" style="grid-column:1;" onmouseenter="showSkillInfo(this)" data-name="AutoCAD" data-tier="Familiar" data-context="2D engineering drawings."><div class="pt-tile-num">37</div><div class="pt-tile-symbol">Ac</div><div class="pt-tile-name">AUTOCAD</div></div>
+              <div class="pt-tile pt-familiar" style="grid-column:2;" onmouseenter="showSkillInfo(this)" data-name="Fusion 360" data-tier="Familiar" data-context="3D part design for custom test fixtures."><div class="pt-tile-num">38</div><div class="pt-tile-symbol">F3</div><div class="pt-tile-name">FUSION</div></div>
+              <div class="pt-tile pt-familiar" style="grid-column:3;" onmouseenter="showSkillInfo(this)" data-name="Aspen Plus" data-tier="Familiar" data-context="Process simulation exposure."><div class="pt-tile-num">39</div><div class="pt-tile-symbol">As</div><div class="pt-tile-name">ASPEN</div></div>
+              <div class="pt-tile pt-expert" style="grid-column:4;" onmouseenter="showSkillInfo(this)" data-name="Undergraduate Mentorship" data-tier="Expert" data-context="Mentored 6 undergraduates — 2 first-authored peer-reviewed conference papers."><div class="pt-tile-num">40</div><div class="pt-tile-symbol">Um</div><div class="pt-tile-name">MENTOR</div></div>
+              <div class="pt-tile pt-expert" style="grid-column:5;" onmouseenter="showSkillInfo(this)" data-name="Scientific Communication" data-tier="Expert" data-context="Best Scientific Animation (2025), Best Scientific Image (2026), Best Journal Art (2024)."><div class="pt-tile-num">41</div><div class="pt-tile-symbol">Sc</div><div class="pt-tile-name">SCI-COMM</div></div>
+              <div class="pt-tile pt-expert" style="grid-column:6;" onmouseenter="showSkillInfo(this)" data-name="Technical Presentation" data-tier="Expert" data-context="16 conferences across electrochemistry, materials, and engineering venues."><div class="pt-tile-num">42</div><div class="pt-tile-symbol">Tp</div><div class="pt-tile-name">PRESENT</div></div>
+              <div class="pt-tile pt-proficient" style="grid-column:7;" onmouseenter="showSkillInfo(this)" data-name="TA — ChE Thermodynamics" data-tier="Proficient" data-context="ChE0200 Chemical Engineering Thermodynamics — Spring 2024 and 2025."><div class="pt-tile-num">43</div><div class="pt-tile-symbol">Th</div><div class="pt-tile-name">TA-THER</div></div>
+              <div class="pt-tile pt-proficient" style="grid-column:8;" onmouseenter="showSkillInfo(this)" data-name="TA — Systems Engineering" data-tier="Proficient" data-context="ChE0500 Systems Engineering & Controls — Fall 2025."><div class="pt-tile-num">44</div><div class="pt-tile-symbol">Se</div><div class="pt-tile-name">TA-SYS</div></div>
+              <div class="pt-tile pt-proficient" style="grid-column:9;" onmouseenter="showSkillInfo(this)" data-name="Session Chairing" data-tier="Proficient" data-context="ECS Seattle Spring 2026."><div class="pt-tile-num">45</div><div class="pt-tile-symbol">Ch</div><div class="pt-tile-name">CHAIR</div></div>
+              <div class="pt-tile pt-proficient" style="grid-column:10;" onmouseenter="showSkillInfo(this)" data-name="Graduate Mentorship" data-tier="Proficient" data-context="Peer mentorship and orientation support for incoming graduate students."><div class="pt-tile-num">46</div><div class="pt-tile-symbol">Gm</div><div class="pt-tile-name">GRAD-MN</div></div>
+              <div class="pt-tile pt-familiar" style="grid-column:11;" onmouseenter="showSkillInfo(this)" data-name="Curriculum Design" data-tier="Familiar" data-context="Co-developed lab content for thermodynamics course."><div class="pt-tile-num">47</div><div class="pt-tile-symbol">Cd</div><div class="pt-tile-name">CURRIC</div></div>
+              <div class="pt-tile pt-familiar" style="grid-column:12;" onmouseenter="showSkillInfo(this)" data-name="Grant Writing" data-tier="Familiar" data-context="Contributing author on collaborative research proposals."><div class="pt-tile-num">48</div><div class="pt-tile-symbol">Gw</div><div class="pt-tile-name">GRANT</div></div>
+          </div>
+
+          <div class="pt-blocks-key">
+            <div class="pt-blocks-key-item"><span class="pt-blocks-key-range">1–16</span> Electrochemical &amp; Analytical</div>
+            <div class="pt-blocks-key-item"><span class="pt-blocks-key-range">17–28</span> Synthesis &amp; Fabrication</div>
+            <div class="pt-blocks-key-item"><span class="pt-blocks-key-range">29–39</span> Software &amp; Computation</div>
+            <div class="pt-blocks-key-item"><span class="pt-blocks-key-range">40–48</span> Teaching &amp; Leadership</div>
           </div>
 
           <div id="periodic-info" class="periodic-info">
             <div class="periodic-info-hint">Hover any tile to see specific context, projects, or achievements tied to that skill.</div>
           </div>
-        </div>
-      </div>
+        </div></div>
     </div>
   </div>
 
