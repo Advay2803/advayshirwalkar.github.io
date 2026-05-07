@@ -216,19 +216,19 @@
   .periodic-legend-swatch.fam{background:transparent;border:1px solid var(--border);}
   .periodic-block{margin-bottom:1.6rem;}
   .periodic-block-label{font-size:0.62rem;font-weight:800;color:var(--accent);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:0.6rem;}
-  .pt-grid{display:grid;grid-template-columns:repeat(18,minmax(0,1fr));gap:4px;max-width:1080px;}
+  .pt-grid{display:grid;grid-template-columns:repeat(18,minmax(0,1fr));gap:5px;max-width:1300px;}
   .pt-tile{aspect-ratio:1;border-radius:6px;position:relative;cursor:default;display:flex;flex-direction:column;justify-content:space-between;padding:5px 5px 4px;transition:transform 0.18s ease,box-shadow 0.18s ease;user-select:none;border:1px solid transparent;box-sizing:border-box;}
   .pt-tile:hover{transform:scale(1.08);z-index:5;box-shadow:0 6px 18px rgba(15,32,68,0.22);}
-  .pt-tile-num{font-size:0.5rem;font-weight:700;opacity:0.65;line-height:1;}
-  .pt-tile-symbol{font-size:1.05rem;font-weight:800;text-align:center;letter-spacing:-0.5px;line-height:1;}
-  .pt-tile-name{font-size:0.4rem;font-weight:700;text-align:center;text-transform:uppercase;letter-spacing:0.3px;line-height:1.1;opacity:0.85;}
+  .pt-tile-num{font-size:0.55rem;font-weight:700;opacity:0.65;line-height:1;}
+  .pt-tile-symbol{font-size:1.25rem;font-weight:800;text-align:center;letter-spacing:-0.5px;line-height:1;}
+  .pt-tile-name{font-size:0.45rem;font-weight:700;text-align:center;text-transform:uppercase;letter-spacing:0.3px;line-height:1.1;opacity:0.85;}
   .pt-expert{background:linear-gradient(135deg,#0f2044 0%,#1a4fad 100%);color:#fff;}
   .pt-proficient{background:#dbe6f4;color:#0f1623;}
   .pt-familiar{background:#e7ebf3;color:#5a6478;border-style:solid;}
   .pt-blocks-key{display:flex;flex-wrap:wrap;gap:1.4rem;margin-top:1.2rem;padding:0.8rem 0;border-top:1px solid var(--border);}
   .pt-blocks-key-item{font-size:0.72rem;color:var(--muted);display:flex;align-items:center;gap:0.5rem;}
   .pt-blocks-key-range{font-weight:800;color:var(--accent);font-variant-numeric:tabular-nums;background:rgba(26,79,173,0.08);padding:2px 8px;border-radius:4px;letter-spacing:0.3px;}
-  .periodic-info{margin-top:1.4rem;padding:1rem 1.2rem;background:rgba(255,255,255,0.94);border:1px solid var(--border);border-radius:8px;border-left:3px solid var(--accent);min-height:90px;transition:all 0.12s ease;}
+  .periodic-info{padding:1rem 1.2rem;background:rgba(255,255,255,0.94);border:1px solid var(--border);border-radius:8px;border-left:3px solid var(--accent);transition:all 0.12s ease;align-self:stretch;display:flex;flex-direction:column;justify-content:center;}
   .periodic-info-hint{font-size:0.78rem;color:var(--muted);font-style:italic;line-height:1.6;}
   .periodic-info-tier{display:inline-block;font-size:0.6rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;padding:3px 9px;border-radius:3px;margin-bottom:0.55rem;background:var(--accent2);color:var(--accent);}
   .periodic-info-row{display:flex;align-items:baseline;gap:0.7rem;flex-wrap:wrap;margin-bottom:0.4rem;}
@@ -242,6 +242,7 @@
   @media(max-width:900px){
     .pt-grid{display:flex;flex-wrap:wrap;gap:4px;}
     .pt-grid .pt-tile{width:62px;height:62px;aspect-ratio:auto;}
+    .pt-grid .periodic-info{width:100%;margin-top:1rem;flex:0 0 100%;}
     .pt-tile-symbol{font-size:1.15rem;}
     .pt-tile-name{font-size:0.4rem;}
   }
@@ -915,7 +916,7 @@
     <div class="panel-header"><div class="p-tag">Technical Expertise</div><h2>Skills</h2><div class="p-line"></div></div>
     <div class="topo-wrap" style="background:linear-gradient(140deg,#f8f9fc 0%,#edf2fb 100%);">
       <svg class="topo-bg" viewBox="0 0 1000 350" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-        <g fill="none" stroke="#1a4fad" stroke-width="0.9" opacity="0.2">
+        <g fill="none" stroke="#1a4fad" stroke-width="0.7" opacity="0.08">
           <rect x="50" y="50" width="900" height="250" rx="60"/><rect x="100" y="80" width="800" height="190" rx="50"/><rect x="150" y="110" width="700" height="130" rx="40"/><rect x="200" y="140" width="600" height="70" rx="30"/>
           <rect x="0" y="20" width="300" height="310" rx="80"/><rect x="30" y="50" width="240" height="250" rx="65"/>
           <rect x="700" y="20" width="320" height="310" rx="80"/><rect x="730" y="50" width="260" height="250" rx="65"/>
@@ -977,18 +978,16 @@
               <div class="pt-tile pt-proficient" style="grid-column:9;" onmouseenter="showSkillInfo(this)" data-name="Session Chairing" data-tier="Proficient" data-context="ECS Seattle Spring 2026."><div class="pt-tile-num">45</div><div class="pt-tile-symbol">Ch</div><div class="pt-tile-name">CHAIR</div></div>
               <div class="pt-tile pt-proficient" style="grid-column:10;" onmouseenter="showSkillInfo(this)" data-name="Graduate Mentorship" data-tier="Proficient" data-context="Peer mentorship and orientation support for incoming graduate students."><div class="pt-tile-num">46</div><div class="pt-tile-symbol">Gm</div><div class="pt-tile-name">GRAD-MN</div></div>
               <div class="pt-tile pt-familiar" style="grid-column:11;" onmouseenter="showSkillInfo(this)" data-name="Curriculum Design" data-tier="Familiar" data-context="Co-developed lab content for thermodynamics course."><div class="pt-tile-num">47</div><div class="pt-tile-symbol">Cd</div><div class="pt-tile-name">CURRIC</div></div>
-              <div class="pt-tile pt-familiar" style="grid-column:12;" onmouseenter="showSkillInfo(this)" data-name="Grant Writing" data-tier="Familiar" data-context="Contributing author on collaborative research proposals."><div class="pt-tile-num">48</div><div class="pt-tile-symbol">Gw</div><div class="pt-tile-name">GRANT</div></div>
+              <div id="periodic-info" class="periodic-info" style="grid-column:3 / 13;grid-row:1 / 4;">
+                <div class="periodic-info-hint">Hover any tile to see specific context, projects, or achievements tied to that skill.</div>
+              </div>
           </div>
 
           <div class="pt-blocks-key">
             <div class="pt-blocks-key-item"><span class="pt-blocks-key-range">1–16</span> Electrochemical &amp; Analytical</div>
             <div class="pt-blocks-key-item"><span class="pt-blocks-key-range">17–28</span> Synthesis &amp; Fabrication</div>
             <div class="pt-blocks-key-item"><span class="pt-blocks-key-range">29–39</span> Software &amp; Computation</div>
-            <div class="pt-blocks-key-item"><span class="pt-blocks-key-range">40–48</span> Teaching &amp; Leadership</div>
-          </div>
-
-          <div id="periodic-info" class="periodic-info">
-            <div class="periodic-info-hint">Hover any tile to see specific context, projects, or achievements tied to that skill.</div>
+            <div class="pt-blocks-key-item"><span class="pt-blocks-key-range">40–47</span> Teaching &amp; Leadership</div>
           </div>
         </div></div>
     </div>
