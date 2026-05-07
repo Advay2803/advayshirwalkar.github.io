@@ -73,7 +73,7 @@
   .home-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:1rem;}
   .navy-tile{background:linear-gradient(135deg,#0f2044,#1a4fad);position:relative;overflow:hidden;}
   .navy-tile svg.topo-bg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:0.12;}
-  .home-welcome{grid-column:1/-1;border-radius:10px;padding:3.5rem 2.2rem;position:relative;overflow:hidden;}
+  .home-welcome{grid-column:1/-1;border-radius:10px;padding:2.5rem 2.5rem;position:relative;overflow:hidden;min-height:420px;display:flex;flex-direction:column;justify-content:flex-end;}
   .home-welcome svg.topo-bg{opacity:0.18;}
   .home-welcome h3{font-size:1.1rem;font-weight:800;color:#fff;margin-bottom:0.4rem;position:relative;}
   .home-welcome p{font-size:0.86rem;color:rgba(255,255,255,0.85);line-height:1.75;margin-bottom:1.2rem;text-align:justify;position:relative;}
@@ -95,9 +95,8 @@
   .impact-section{margin-top:1.5rem;}
   .impact-header{margin-bottom:1.1rem;}
   .impact-header h2{font-size:1.4rem;font-weight:800;color:var(--text);}
-  .impact-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:1rem;}
-  .impact-tile{background:rgba(255,255,255,0.92);backdrop-filter:blur(4px);border:1px solid var(--border);border-radius:10px;padding:1.4rem;transition:all 0.2s;position:relative;overflow:hidden;grid-column:span 2;}
-  .impact-tile:nth-child(4){grid-column-start:2;}
+  .impact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;}
+  .impact-tile{background:rgba(255,255,255,0.92);backdrop-filter:blur(4px);border:1px solid var(--border);border-radius:10px;padding:1.4rem;transition:all 0.2s;position:relative;overflow:hidden;}
   .impact-tile::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--accent);}
   .impact-tile:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(26,79,173,0.12);}
   .impact-marker{font-size:1.85rem;font-weight:900;color:var(--accent);line-height:1;margin-bottom:0.5rem;letter-spacing:-0.5px;}
@@ -105,14 +104,16 @@
   .impact-desc{font-size:0.78rem;color:var(--muted);line-height:1.65;}
 
   /* OPEN TO STRIP */
-  .opento-strip{display:flex;align-items:center;gap:1.5rem;background:rgba(255,255,255,0.92);backdrop-filter:blur(4px);border:1px solid var(--border);border-radius:10px;padding:0.9rem 1.4rem;margin-top:1rem;position:relative;flex-wrap:wrap;}
-  .opento-strip::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--accent);border-radius:10px 0 0 10px;}
-  .opento-label{font-size:0.7rem;font-weight:800;color:var(--accent);text-transform:uppercase;letter-spacing:1.5px;flex-shrink:0;}
-  .opento-content{display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;}
-  .opento-group{display:flex;align-items:center;gap:0.4rem;flex-wrap:wrap;}
-  .opento-key{font-size:0.62rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;margin-right:0.15rem;}
-  .opento-chip{font-size:0.72rem;font-weight:600;padding:3px 10px;border-radius:4px;background:var(--accent2);color:var(--accent);border:1px solid #c5d5f5;}
-  .opento-divider{width:1px;height:20px;background:var(--border);}
+  .opento-section{margin-top:1.5rem;}
+  .opento-header{margin-bottom:1.1rem;}
+  .opento-header h2{font-size:1.4rem;font-weight:800;color:var(--text);}
+  .opento-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+  .opento-tile{background:rgba(255,255,255,0.92);backdrop-filter:blur(4px);border:1px solid var(--border);border-radius:10px;padding:1.4rem;transition:all 0.2s;position:relative;overflow:hidden;}
+  .opento-tile::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--accent);}
+  .opento-tile:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(26,79,173,0.12);}
+  .opento-tile-label{font-size:0.7rem;font-weight:800;color:var(--accent);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:0.95rem;}
+  .opento-tile-chips{display:flex;flex-wrap:wrap;gap:0.5rem;}
+  .opento-chip{font-size:0.78rem;font-weight:600;padding:5px 12px;border-radius:5px;background:var(--accent2);color:var(--accent);border:1px solid #c5d5f5;}
 
   /* ABOUT */
   .about-card p{font-size:0.87rem;color:var(--muted);line-height:1.85;margin-bottom:0.9rem;text-align:justify;}
@@ -299,8 +300,6 @@
     .res-grid{grid-template-columns:1fr 1fr;}
     .awards-grid{grid-template-columns:1fr 1fr;}
     .impact-grid{grid-template-columns:1fr 1fr;}
-    .impact-tile{grid-column:auto;}
-    .impact-tile:nth-child(4){grid-column-start:auto;}
     .topo-content>div[style*="grid-template-columns:320px"]{grid-template-columns:1fr !important;}
     .topo-content>div>div:first-child>div:first-child{width:120px !important;height:120px !important;margin:0 auto;}
     .panel-header h2{font-size:1.3rem;}
@@ -312,9 +311,7 @@
     .res-grid{grid-template-columns:1fr;}
     .awards-grid{grid-template-columns:1fr;}
     .impact-grid{grid-template-columns:1fr;}
-    .opento-strip{flex-direction:column;align-items:flex-start;gap:0.6rem;}
-    .opento-content{gap:0.7rem;flex-direction:column;align-items:flex-start;}
-    .opento-divider{display:none;}
+    .opento-grid{grid-template-columns:1fr;}
     .tab{padding:0.65rem 0.8rem;font-size:0.62rem;}
     .main{padding:1rem 0.8rem;}
     .topo-content{padding:1rem !important;}
@@ -400,7 +397,7 @@
           <div class="impact-desc">Led the scale-up of Ni–Mo/C catalyst from milligrams to tens of grams with reproducible activity. Delivered manufacturing protocols to Giner Inc. for commercial roadmap.</div>
         </div>
         <div class="impact-tile">
-          <div class="impact-marker">≈ Pt</div>
+          <div class="impact-marker" style="font-size:1.55rem;">Ni–Mo ≈ Pt</div>
           <div class="impact-title">Device-Level Parity at the Cathode</div>
           <div class="impact-desc">Ni–Mo/C performance statistically indistinguishable from Pt–Ru/C in AEM electrolyzers. Lead author, ACS Energy Letters (2025).</div>
         </div>
@@ -414,29 +411,31 @@
           <div class="impact-title">Industry & Cross-Institutional Partners</div>
           <div class="impact-desc">Active and upcoming collaborations with Giner Inc., Lawrence Berkeley National Laboratory, UMN (Prof. Leighton), and Lubrizol.</div>
         </div>
-        <div class="impact-tile">
-          <div class="impact-marker">6</div>
-          <div class="impact-title">Researchers Mentored</div>
-          <div class="impact-desc">Mentored two undergraduates to first-authored conference presentations (Bender 2025, Dossa 2024). Two semesters as TA — ChemE Thermodynamics and Systems Engineering.</div>
-        </div>
       </div>
     </div>
-    <div class="opento-strip">
-      <div class="opento-label">Open To</div>
-      <div class="opento-content">
-        <div class="opento-group">
-          <span class="opento-key">Roles</span>
-          <span class="opento-chip">R&amp;D</span>
-          <span class="opento-chip">Process Development</span>
-          <span class="opento-chip">Scale-Up</span>
+    <div class="opento-section">
+      <div class="opento-header">
+        <div class="p-tag">Opportunities</div>
+        <h2>Open to</h2>
+        <div class="p-line"></div>
+      </div>
+      <div class="opento-grid">
+        <div class="opento-tile">
+          <div class="opento-tile-label">Target Roles</div>
+          <div class="opento-tile-chips">
+            <span class="opento-chip">R&amp;D</span>
+            <span class="opento-chip">Process Development</span>
+            <span class="opento-chip">Scale-Up</span>
+          </div>
         </div>
-        <div class="opento-divider"></div>
-        <div class="opento-group">
-          <span class="opento-key">Sectors</span>
-          <span class="opento-chip">Green Hydrogen</span>
-          <span class="opento-chip">Energy Storage</span>
-          <span class="opento-chip">Specialty Chemicals</span>
-          <span class="opento-chip">Advanced Materials</span>
+        <div class="opento-tile">
+          <div class="opento-tile-label">Target Sectors</div>
+          <div class="opento-tile-chips">
+            <span class="opento-chip">Green Hydrogen</span>
+            <span class="opento-chip">Energy Storage</span>
+            <span class="opento-chip">Specialty Chemicals</span>
+            <span class="opento-chip">Advanced Materials</span>
+          </div>
         </div>
       </div>
     </div>
